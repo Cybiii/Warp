@@ -1,7 +1,0 @@
-# Chipyard Integration
-
-Place your Chipyard integration files here:
-- WarpAccelerator.scala (Chisel wrapper/BlackBox)
-- WarpConfigs.scala (Chipyard configs for different cores)
-- build.sbt (SBT dependencies if needed)
-

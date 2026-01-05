@@ -44,3 +44,7 @@ target/
 .DS_Store
 Thumbs.db
 
+# Documentation (ignore all .md files except README.md)
+*.md
+!README.md
+

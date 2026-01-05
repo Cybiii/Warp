@@ -6,9 +6,10 @@ A small SIMT (Single Instruction, Multiple Thread) vector engine with 8-16 confi
 
 ```
 Warp/
-├── rtl/                    # Verilog RTL source files
-├── include/                 # Verilog header files (defines, opcodes)
-├── tb/                     # Testbenches
+├── rtl/                    # SystemVerilog RTL source files (.sv)
+├── include/                # SystemVerilog package
+│   └── warp_pkg.sv        # SystemVerilog package (single source of truth)
+├── tb/                     # SystemVerilog testbenches (.sv)
 │   └── test_vectors/       # Test vector files
 ├── scripts/                # Build and simulation scripts
 ├── docs/                   # Documentation
@@ -27,10 +28,12 @@ Warp/
 
 ## Quick Start
 
-1. Implement RTL modules in `rtl/`
-2. Define constants and opcodes in `include/`
-3. Create testbenches in `tb/`
+1. Implement RTL modules in `rtl/` (SystemVerilog `.sv` files)
+2. Use `warp_pkg.sv` package for constants, types, and opcodes
+3. Create testbenches in `tb/` (SystemVerilog `.sv` files)
 4. Integrate with Chipyard in `chipyard/`
+
+**Note**: This project uses SystemVerilog for better type safety, packages, and modern HDL features.
 
 See `docs/` for detailed documentation.
 
