@@ -2,20 +2,6 @@
 
 A small SIMT (Single Instruction, Multiple Thread) vector engine with 8-16 configurable lanes, designed for integration with RISC-V cores via RoCC interface in Chipyard.
 
-## Project Structure
-
-```
-Warp/
-├── rtl/                    # SystemVerilog RTL source files (.sv)
-├── include/                # SystemVerilog package
-│   └── warp_pkg.sv        # SystemVerilog package (single source of truth)
-├── tb/                     # SystemVerilog testbenches (.sv)
-│   └── test_vectors/       # Test vector files
-├── scripts/                # Build and simulation scripts
-├── docs/                   # Documentation
-└── chipyard/               # Chipyard integration files (Scala)
-```
-
 ## Features
 
 - 8-16 configurable processing lanes
