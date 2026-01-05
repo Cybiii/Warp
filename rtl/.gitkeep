@@ -1,0 +1,14 @@
+# RTL Source Files
+
+Place your Verilog modules here:
+- warp_engine.v (top-level)
+- rocc_interface.v
+- warp_controller.v
+- instruction_fifo.v
+- warp_mask.v
+- lane_array.v
+- processing_lane.v
+- alu.v
+- register_file.v
+- memory_interface.v
+

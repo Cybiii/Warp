@@ -1,0 +1,8 @@
+# Scripts
+
+Place your build and simulation scripts here:
+- sim.tcl (simulation script)
+- synth.tcl (synthesis script)
+- run_tests.sh (test runner)
+- chipyard_build.sh (Chipyard build script)
+

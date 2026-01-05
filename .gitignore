@@ -1,0 +1,46 @@
+# Build artifacts
+*.o
+*.a
+*.so
+*.dll
+*.exe
+
+# Simulation artifacts
+*.vcd
+*.fsdb
+*.vpd
+*.log
+*.jou
+work/
+simv
+vsim.wlf
+
+# Synthesis artifacts
+*.dcp
+*.bit
+*.mcs
+*.prj
+*.xpr
+*.runs/
+*.cache/
+*.hw/
+*.ip_user_files/
+
+# Chipyard
+generators/
+project/
+target/
+*.fir
+*.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+

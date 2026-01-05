@@ -1,0 +1,6 @@
+# Header Files
+
+Place your Verilog header files here:
+- warp_defines.vh (constants, parameters)
+- warp_opcodes.vh (instruction opcodes)
+

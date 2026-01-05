@@ -1,0 +1,9 @@
+# Documentation
+
+Place your documentation here:
+- ARCHITECTURE.md (detailed architecture doc)
+- ROCC_INTERFACE.md (RoCC integration guide)
+- CHIPYARD_INTEGRATION.md (Chipyard integration guide)
+- CORE_SWITCHING.md (guide for switching between cores)
+- INSTRUCTIONS.md (instruction set reference)
+

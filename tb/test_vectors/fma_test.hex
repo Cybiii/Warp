@@ -1,0 +1,6 @@
+// Test vectors for FMA operation
+// Format: One test case per line
+// TODO: Add test vectors for FMA operation
+// Example format (adjust as needed):
+// operand1, operand2, operand3, expected_result
+
