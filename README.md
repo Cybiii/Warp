@@ -19,10 +19,3 @@ A small SIMT (Single Instruction, Multiple Thread) vector engine with 8-16 confi
 3. Create testbenches in `tb/` (SystemVerilog `.sv` files)
 4. Integrate with Chipyard in `chipyard/`
 
-**Note**: This project uses SystemVerilog for better type safety, packages, and modern HDL features.
-
-See `docs/` for detailed documentation.
-
-## Status
-
-🚧 **In Development** - Folder structure created, ready for implementation.
