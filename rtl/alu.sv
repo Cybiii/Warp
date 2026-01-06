@@ -1,5 +1,4 @@
 // ALU - Arithmetic Logic Unit
-// SystemVerilog implementation
 
 `include "warp_pkg.sv"
 
@@ -25,41 +24,69 @@ module alu #(
 
     import warp_pkg::*;
 
-    // TODO: Implement ADD operation
-    // TODO: Implement MUL operation
-    // TODO: Implement FMA operation
-    // TODO: Implement MAX operation
-    // TODO: Implement RELU operation
-    // TODO: Implement overflow/saturation
+    // Intermediate signals for overflow detection
+    logic [DATA_WIDTH:0] add_result_ext;        // Extended for ADD overflow
+    logic [2*DATA_WIDTH-1:0] mul_result_ext;   // Extended for MUL overflow
+    logic [2*DATA_WIDTH-1:0] fma_mul_result;    // MUL result for FMA
+    logic [DATA_WIDTH:0] fma_result_ext;        // Extended for FMA overflow
+    logic mul_ovf, add_ovf;                      // Overflow flags for FMA
 
     always_comb begin
         result = '0;
         overflow = 1'b0;
         ready = 1'b1;
 
+        // Compute extended results for overflow detection
+        add_result_ext = {1'b0, operand1} + {1'b0, operand2};
+        mul_result_ext = $signed(operand1) * $signed(operand2);
+        fma_mul_result = $signed(operand1) * $signed(operand2);
+        fma_result_ext = {1'b0, fma_mul_result[DATA_WIDTH-1:0]} + {1'b0, operand3};
+
         case (opcode)
             OP_ADD: begin
-                // TODO: Implement ADD
-                result = operand1 + operand2;
+                result = add_result_ext[DATA_WIDTH-1:0];
+                // Overflow: if both operands same sign, result should have same sign
+                // Signed overflow: (op1[31] == op2[31]) && (result[31] != op1[31])
+                overflow = (operand1[DATA_WIDTH-1] == operand2[DATA_WIDTH-1]) && 
+                           (result[DATA_WIDTH-1] != operand1[DATA_WIDTH-1]);
             end
+            
             OP_MUL: begin
-                // TODO: Implement MUL
-                result = operand1 * operand2;
+                result = mul_result_ext[DATA_WIDTH-1:0];
+                // Overflow: if upper bits don't match sign extension of result
+                // Check if upper 32 bits are all zeros or all ones (sign extension)
+                overflow = (mul_result_ext[2*DATA_WIDTH-1:DATA_WIDTH] != {DATA_WIDTH{result[DATA_WIDTH-1]}}) &&
+                           (mul_result_ext[2*DATA_WIDTH-1:DATA_WIDTH] != '0);
             end
+            
             OP_FMA: begin
-                // TODO: Implement FMA: (op1 * op2) + op3
-                result = (operand1 * operand2) + operand3;
+                // FMA: (op1 * op2) + op3
+                result = fma_result_ext[DATA_WIDTH-1:0];
+                // Overflow can occur in multiply or add
+                // Check multiply overflow first
+                mul_ovf = (fma_mul_result[2*DATA_WIDTH-1:DATA_WIDTH] != {DATA_WIDTH{fma_mul_result[DATA_WIDTH-1]}}) &&
+                          (fma_mul_result[2*DATA_WIDTH-1:DATA_WIDTH] != '0);
+                // Check add overflow
+                add_ovf = (fma_mul_result[DATA_WIDTH-1] == operand3[DATA_WIDTH-1]) && 
+                          (result[DATA_WIDTH-1] != fma_mul_result[DATA_WIDTH-1]);
+                overflow = mul_ovf || add_ovf;
             end
+            
             OP_MAX: begin
-                // TODO: Implement MAX
-                result = (operand1 > operand2) ? operand1 : operand2;
+                // Signed comparison for MAX
+                result = ($signed(operand1) > $signed(operand2)) ? operand1 : operand2;
+                overflow = 1'b0; // MAX never overflows
             end
+            
             OP_RELU: begin
-                // TODO: Implement RELU: max(0, op1)
-                result = (operand1[31]) ? '0 : operand1; // Sign bit check
+                // RELU: max(0, op1) - clamps negative values to zero
+                result = (operand1[DATA_WIDTH-1]) ? '0 : operand1; // Sign bit check
+                overflow = 1'b0; // RELU never overflows
             end
+            
             default: begin
                 result = '0;
+                overflow = 1'b0;
             end
         endcase
     end
