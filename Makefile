@@ -91,6 +91,18 @@ test_integration: $(BUILD_DIR)
 	@echo "Executing testbench..."
 	./$(BUILD_DIR)/tb_warp_integration
 
+# Test warp mask
+test_warp_mask: $(BUILD_DIR)
+	@echo "Running Warp Mask testbench..."
+	$(VERILATOR) $(VERILATOR_FLAGS) \
+		--top-module tb_warp_mask \
+		-o $(shell pwd)/$(BUILD_DIR)/tb_warp_mask \
+		$(INCLUDE_DIR)/warp_pkg.sv \
+		$(RTL_DIR)/warp_mask.sv \
+		$(TB_DIR)/tb_warp_mask.sv
+	@echo "Executing testbench..."
+	./$(BUILD_DIR)/tb_warp_mask
+
 # Test instruction FIFO
 test_fifo: $(BUILD_DIR)
 	@echo "Running Instruction FIFO testbench..."
@@ -116,7 +128,7 @@ test_register_file: $(BUILD_DIR)
 	./$(BUILD_DIR)/tb_register_file
 
 # Run all tests
-test_all: test_alu test_register_file test_fifo test_integration
+test_all: test_alu test_register_file test_fifo test_warp_mask test_integration
 	@echo "All tests completed!"
 
 # Alternative: VCS simulation
