@@ -33,20 +33,40 @@ module instruction_fifo #(
     logic [$clog2(FIFO_DEPTH)-1:0] write_ptr, read_ptr;
     logic [$clog2(FIFO_DEPTH):0] count;
 
-    // TODO: Implement FIFO buffer
-    // TODO: Implement overflow/underflow detection
-    // TODO: Implement full/empty flags
-
+    // FIFO implementation with simultaneous push/pop support
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             write_ptr <= '0;
             read_ptr <= '0;
             count <= '0;
         end else begin
-            // TODO: Implement FIFO logic
+            case ({push && !full, pop && !empty})
+                2'b10: begin // Push only
+                    fifo_mem[write_ptr] <= data_in;
+                    write_ptr <= write_ptr + 1'b1;
+                    count <= count + 1'b1;
+                end
+                2'b01: begin // Pop only
+                    read_ptr <= read_ptr + 1'b1;
+                    count <= count - 1'b1;
+                end
+                2'b11: begin // Simultaneous push and pop
+                    fifo_mem[write_ptr] <= data_in;
+                    write_ptr <= write_ptr + 1'b1;
+                    read_ptr <= read_ptr + 1'b1;
+                    // count stays the same
+                end
+                default: begin
+                    // No operation
+                end
+            endcase
         end
     end
 
+    // Output data from read pointer
+    assign data_out = fifo_mem[read_ptr];
+    
+    // Status flags
     assign empty = (count == 0);
     assign full = (count == FIFO_DEPTH);
     assign valid = !empty;
