@@ -63,17 +63,17 @@ class WarpEngineBlackBox(params: WarpParams) extends BlackBox(Map(
   })
   
   // Add SystemVerilog source files
-  addResource("/rtl/warp_engine.sv")
-  addResource("/rtl/rocc_interface.sv")
-  addResource("/rtl/warp_controller.sv")
-  addResource("/rtl/instruction_fifo.sv")
-  addResource("/rtl/warp_mask.sv")
-  addResource("/rtl/lane_array.sv")
-  addResource("/rtl/processing_lane.sv")
-  addResource("/rtl/register_file.sv")
-  addResource("/rtl/alu.sv")
-  addResource("/rtl/memory_interface.sv")
-  addResource("/include/warp_pkg.sv")
+  addResource("/vsrc/warp_engine.sv")
+  addResource("/vsrc/rocc_interface.sv")
+  addResource("/vsrc/warp_controller.sv")
+  addResource("/vsrc/instruction_fifo.sv")
+  addResource("/vsrc/warp_mask.sv")
+  addResource("/vsrc/lane_array.sv")
+  addResource("/vsrc/processing_lane.sv")
+  addResource("/vsrc/register_file.sv")
+  addResource("/vsrc/alu.sv")
+  addResource("/vsrc/memory_interface.sv")
+  addResource("/vsrc/warp_pkg.sv")
 }
 
 // RoCC Accelerator wrapper
