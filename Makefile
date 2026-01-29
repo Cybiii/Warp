@@ -72,7 +72,7 @@ test_alu: $(BUILD_DIR)
 	@echo "Running ALU testbench..."
 	$(VERILATOR) $(VERILATOR_FLAGS) \
 		--top-module tb_alu \
-		-o $(BUILD_DIR)/tb_alu \
+		-o $(shell pwd)/$(BUILD_DIR)/tb_alu \
 		$(INCLUDE_DIR)/warp_pkg.sv \
 		$(RTL_DIR)/alu.sv \
 		$(TB_DIR)/tb_alu.sv
@@ -84,7 +84,7 @@ test_integration: $(BUILD_DIR)
 	@echo "Running Warp Engine integration testbench..."
 	$(VERILATOR) $(VERILATOR_FLAGS) \
 		--top-module tb_warp_integration \
-		-o $(BUILD_DIR)/tb_warp_integration \
+		-o $(shell pwd)/$(BUILD_DIR)/tb_warp_integration \
 		$(INCLUDE_DIR)/warp_pkg.sv \
 		$(RTL_SRCS) \
 		$(TB_DIR)/tb_warp_integration.sv

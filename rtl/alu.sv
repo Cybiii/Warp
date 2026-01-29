@@ -54,9 +54,8 @@ module alu #(
             OP_MUL: begin
                 result = mul_result_ext[DATA_WIDTH-1:0];
                 // Overflow: if upper bits don't match sign extension of result
-                // Check if upper 32 bits are all zeros or all ones (sign extension)
-                overflow = (mul_result_ext[2*DATA_WIDTH-1:DATA_WIDTH] != {DATA_WIDTH{result[DATA_WIDTH-1]}}) &&
-                           (mul_result_ext[2*DATA_WIDTH-1:DATA_WIDTH] != '0);
+                // For signed multiplication, upper bits should be sign extension of lower bits
+                overflow = (mul_result_ext[2*DATA_WIDTH-1:DATA_WIDTH] != {DATA_WIDTH{result[DATA_WIDTH-1]}});
             end
             
             OP_FMA: begin
@@ -64,8 +63,7 @@ module alu #(
                 result = fma_result_ext[DATA_WIDTH-1:0];
                 // Overflow can occur in multiply or add
                 // Check multiply overflow first
-                mul_ovf = (fma_mul_result[2*DATA_WIDTH-1:DATA_WIDTH] != {DATA_WIDTH{fma_mul_result[DATA_WIDTH-1]}}) &&
-                          (fma_mul_result[2*DATA_WIDTH-1:DATA_WIDTH] != '0);
+                mul_ovf = (fma_mul_result[2*DATA_WIDTH-1:DATA_WIDTH] != {DATA_WIDTH{fma_mul_result[DATA_WIDTH-1]}});
                 // Check add overflow
                 add_ovf = (fma_mul_result[DATA_WIDTH-1] == operand3[DATA_WIDTH-1]) && 
                           (result[DATA_WIDTH-1] != fma_mul_result[DATA_WIDTH-1]);
