@@ -104,7 +104,7 @@ module warp_controller #(
             
             STATE_LOAD: begin
                 // Fetch instructions from memory into FIFO
-                mem_req = !fifo_full && (inst_count < kernel_length_r);
+                mem_req = (inst_count < kernel_length_r);
                 
                 if (inst_count >= kernel_length_r) begin
                     // All instructions loaded
@@ -137,7 +137,7 @@ module warp_controller #(
             
             STATE_STALL: begin
                 // Wait for memory to be ready
-                if (mem_ready && !fifo_full) begin
+                if (mem_ready) begin
                     state_next = STATE_LOAD;
                 end
             end
@@ -160,7 +160,7 @@ module warp_controller #(
     assign status.executing = (state_r == STATE_EXECUTE);
     assign status.done = (state_r == STATE_DONE);
     assign status.error = kernel_error;
-    assign status.fifo_full = fifo_full;
+    assign status.fifo_full = 1'b0;  // FIFO full status not available in controller
     assign status.fifo_empty = fifo_empty;
 
 endmodule
