@@ -44,8 +44,8 @@ void Vtb_warp_controller___024root__trace_chg_0_sub_0(Vtb_warp_controller___024r
         bufp->chgBit(oldp+14,(vlSelf->tb_warp_controller__DOT__kernel_done));
         bufp->chgBit(oldp+15,(vlSelf->tb_warp_controller__DOT__kernel_error));
         bufp->chgCData(oldp+16,(vlSelf->tb_warp_controller__DOT__dut__DOT__state_r),3);
-        bufp->chgSData(oldp+17,(vlSelf->tb_warp_controller__DOT__dut__DOT__inst_count),16);
-        bufp->chgIData(oldp+18,(vlSelf->tb_warp_controller__DOT__dut__DOT__fetch_addr),32);
+        bufp->chgIData(oldp+17,(vlSelf->tb_warp_controller__DOT__dut__DOT__fetch_addr),32);
+        bufp->chgSData(oldp+18,(vlSelf->tb_warp_controller__DOT__dut__DOT__inst_count),16);
         bufp->chgBit(oldp+19,(vlSelf->tb_warp_controller__DOT__dut__DOT__kernel_start_r));
         bufp->chgIData(oldp+20,(vlSelf->tb_warp_controller__DOT__dut__DOT__kernel_addr_r),32);
         bufp->chgSData(oldp+21,(vlSelf->tb_warp_controller__DOT__dut__DOT__kernel_length_r),16);

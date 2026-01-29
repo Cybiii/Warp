@@ -97,8 +97,8 @@ module rocc_interface #(
                 resp_rd_r <= cmd_rd;
             end
             
-            if (cmd_state_r == CMD_RESPOND) begin
-                resp_valid_r <= 1'b1;
+            // Prepare response data during CMD_PROCESS
+            if (cmd_state_r == CMD_PROCESS) begin
                 case (opcode_r)
                     ROCC_OP_GET_STATUS: begin
                         resp_data_r <= {26'b0, status};
@@ -107,7 +107,14 @@ module rocc_interface #(
                         resp_data_r <= '0;
                     end
                 endcase
-            end else if (resp_ready) begin
+            end
+            
+            // Set resp_valid when entering CMD_RESPOND
+            if (cmd_state_next == CMD_RESPOND && cmd_state_r != CMD_RESPOND) begin
+                resp_valid_r <= 1'b1;
+            end
+            // Clear resp_valid when leaving CMD_RESPOND (handshake completed)
+            else if (cmd_state_r == CMD_RESPOND && cmd_state_next == CMD_IDLE) begin
                 resp_valid_r <= 1'b0;
             end
         end

@@ -26,11 +26,12 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_warp_integration___024root final : public
         CData/*4:0*/ tb_warp_integration__DOT__cmd_rs2;
         CData/*4:0*/ tb_warp_integration__DOT__cmd_rd;
         CData/*0:0*/ tb_warp_integration__DOT__resp_ready;
-        CData/*0:0*/ tb_warp_integration__DOT__mem_req_valid;
-        CData/*0:0*/ tb_warp_integration__DOT__mem_req_write;
         CData/*0:0*/ tb_warp_integration__DOT__mem_resp_valid;
+        CData/*0:0*/ tb_warp_integration__DOT__mem_resp_ready;
         CData/*0:0*/ tb_warp_integration__DOT___Vpast_0_0;
         CData/*0:0*/ tb_warp_integration__DOT___Vpast_1_0;
+        CData/*0:0*/ tb_warp_integration__DOT___Vpast_2_0;
+        CData/*0:0*/ tb_warp_integration__DOT___Vpast_3_0;
         CData/*0:0*/ tb_warp_integration__DOT__dut__DOT__kernel_start;
         CData/*0:0*/ tb_warp_integration__DOT__dut__DOT__kernel_done;
         CData/*0:0*/ tb_warp_integration__DOT__dut__DOT__kernel_error;
@@ -80,9 +81,9 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_warp_integration___024root final : public
         CData/*4:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__1__KET____DOT__lane_inst__DOT__src2_addr;
         CData/*0:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__1__KET____DOT__lane_inst__DOT__rf_write_en;
         CData/*0:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__1__KET____DOT__lane_inst__DOT__alu_overflow;
-        CData/*1:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__1__KET____DOT__lane_inst__DOT__state_r;
     };
     struct {
+        CData/*1:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__1__KET____DOT__lane_inst__DOT__state_r;
         CData/*1:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__1__KET____DOT__lane_inst__DOT__state_next;
         CData/*0:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__1__KET____DOT__lane_inst__DOT__alu_inst__DOT__mul_ovf;
         CData/*0:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__1__KET____DOT__lane_inst__DOT__alu_inst__DOT__add_ovf;
@@ -146,7 +147,6 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_warp_integration___024root final : public
         CData/*1:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__state_next;
         CData/*0:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__alu_inst__DOT__mul_ovf;
         CData/*0:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__alu_inst__DOT__add_ovf;
-        CData/*0:0*/ __Vdlyvset__tb_warp_integration__DOT__test_mem__v0;
     };
     struct {
         CData/*0:0*/ __VstlFirstIteration;
@@ -154,18 +154,18 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_warp_integration___024root final : public
         CData/*0:0*/ __Vtrigprevexpr___TOP__tb_warp_integration__DOT__rst_n__0;
         CData/*0:0*/ __VactContinue;
         CData/*0:0*/ __Vsampled__TOP__tb_warp_integration__DOT__cmd_ready;
+        CData/*0:0*/ __Vsampled__TOP__tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r;
         SData/*15:0*/ tb_warp_integration__DOT__dut__DOT__kernel_length;
         SData/*15:0*/ tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count;
         SData/*15:0*/ tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_length_r;
         IData/*31:0*/ tb_warp_integration__DOT__cmd_rs1_data;
         IData/*31:0*/ tb_warp_integration__DOT__cmd_rs2_data;
-        IData/*31:0*/ tb_warp_integration__DOT__mem_req_addr;
-        IData/*31:0*/ tb_warp_integration__DOT__mem_req_data;
         IData/*31:0*/ tb_warp_integration__DOT__mem_resp_data;
         IData/*31:0*/ tb_warp_integration__DOT__test_count;
         IData/*31:0*/ tb_warp_integration__DOT__pass_count;
         IData/*31:0*/ tb_warp_integration__DOT__fail_count;
         IData/*31:0*/ tb_warp_integration__DOT__monitor_counter;
+        IData/*31:0*/ tb_warp_integration__DOT__mem_req_count;
         IData/*31:0*/ tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout;
         IData/*31:0*/ tb_warp_integration__DOT__dut__DOT__kernel_addr;
         IData/*31:0*/ tb_warp_integration__DOT__dut__DOT__lane_instruction;
@@ -232,6 +232,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtb_warp_integration___024root final : public
         IData/*31:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__alu_result;
         IData/*31:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__inst_r;
         IData/*31:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__rf_inst__DOT__unnamedblk1__DOT__i;
+        IData/*31:0*/ __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr;
         IData/*31:0*/ __VactIterCount;
         QData/*32:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__0__KET____DOT__lane_inst__DOT__alu_inst__DOT__add_result_ext;
         QData/*63:0*/ tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__0__KET____DOT__lane_inst__DOT__alu_inst__DOT__mul_result_ext;

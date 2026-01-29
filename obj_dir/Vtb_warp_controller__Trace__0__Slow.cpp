@@ -65,14 +65,15 @@ VL_ATTR_COLD void Vtb_warp_controller___024root__trace_init_sub__TOP__0(Vtb_warp
     tracep->declBus(c+26,0,"lane_instruction",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
     tracep->declBit(c+8,0,"lane_ready",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
     tracep->declBit(c+12,0,"mem_req",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
+    tracep->declBus(c+18,0,"mem_addr",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
     tracep->declBit(c+13,0,"mem_ready",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
     tracep->declBit(c+14,0,"mem_valid",-1, VerilatedTraceSigDirection::INPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1);
     tracep->declBus(c+17,0,"state",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 2,0);
     tracep->declBus(c+27,0,"status",-1, VerilatedTraceSigDirection::OUTPUT, VerilatedTraceSigKind::WIRE, VerilatedTraceSigType::LOGIC, false,-1, 5,0);
     tracep->declBus(c+17,0,"state_r",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1, 2,0);
     tracep->declBus(c+28,0,"state_next",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1, 2,0);
-    tracep->declBus(c+18,0,"inst_count",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1, 15,0);
-    tracep->declBus(c+19,0,"fetch_addr",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
+    tracep->declBus(c+19,0,"inst_count",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1, 15,0);
+    tracep->declBus(c+18,0,"fetch_addr",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
     tracep->declBit(c+20,0,"kernel_start_r",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1);
     tracep->declBus(c+21,0,"kernel_addr_r",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1, 31,0);
     tracep->declBus(c+22,0,"kernel_length_r",-1, VerilatedTraceSigDirection::NONE, VerilatedTraceSigKind::VAR, VerilatedTraceSigType::LOGIC, false,-1, 15,0);
@@ -204,8 +205,8 @@ VL_ATTR_COLD void Vtb_warp_controller___024root__trace_full_0_sub_0(Vtb_warp_con
     bufp->fullBit(oldp+15,(vlSelf->tb_warp_controller__DOT__kernel_done));
     bufp->fullBit(oldp+16,(vlSelf->tb_warp_controller__DOT__kernel_error));
     bufp->fullCData(oldp+17,(vlSelf->tb_warp_controller__DOT__dut__DOT__state_r),3);
-    bufp->fullSData(oldp+18,(vlSelf->tb_warp_controller__DOT__dut__DOT__inst_count),16);
-    bufp->fullIData(oldp+19,(vlSelf->tb_warp_controller__DOT__dut__DOT__fetch_addr),32);
+    bufp->fullIData(oldp+18,(vlSelf->tb_warp_controller__DOT__dut__DOT__fetch_addr),32);
+    bufp->fullSData(oldp+19,(vlSelf->tb_warp_controller__DOT__dut__DOT__inst_count),16);
     bufp->fullBit(oldp+20,(vlSelf->tb_warp_controller__DOT__dut__DOT__kernel_start_r));
     bufp->fullIData(oldp+21,(vlSelf->tb_warp_controller__DOT__dut__DOT__kernel_addr_r),32);
     bufp->fullSData(oldp+22,(vlSelf->tb_warp_controller__DOT__dut__DOT__kernel_length_r),16);

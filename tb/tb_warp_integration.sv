@@ -65,12 +65,38 @@ module tb_warp_integration;
     always @(posedge clk) begin
         if (!cmd_ready && rst_n) begin
             monitor_counter++;
-            if (monitor_counter % 100 == 0) begin
+            if (monitor_counter == 10 || monitor_counter % 100 == 0) begin
                 $display("[MON] Waiting for cmd_ready (stuck for %0d cycles)... resp_valid=%b, resp_ready=%b, cmd_valid=%b", 
                          monitor_counter, resp_valid, resp_ready, cmd_valid);
+                // Try to access internal FSM state
+                $display("[MON]   Internal state access attempt...");
             end
         end else begin
             monitor_counter = 0;
+        end
+    end
+    
+    // Monitor response handshake
+    always @(posedge clk) begin
+        if (resp_valid && resp_ready) begin
+            $display("[MON] Response handshake completed at time %0t", $time);
+        end
+        if (resp_valid && !$past(resp_valid)) begin
+            $display("[MON] resp_valid went HIGH at time %0t", $time);
+        end
+        if (!resp_valid && $past(resp_valid)) begin
+            $display("[MON] resp_valid went LOW at time %0t", $time);
+        end
+    end
+    
+    // Monitor every clock around KERNEL_START to debug
+    int detailed_monitor = 0;
+    always @(posedge clk) begin
+        if ($time >= 300000 && $time <= 700000) begin
+            if (!cmd_ready || resp_valid || cmd_valid) begin
+                $display("[DETAIL] t=%0t: cmd_valid=%b, cmd_ready=%b, resp_valid=%b, resp_ready=%b, mem_req_valid=%b", 
+                         $time, cmd_valid, cmd_ready, resp_valid, resp_ready, mem_req_valid);
+            end
         end
     end
 
@@ -129,6 +155,17 @@ module tb_warp_integration;
     end
 
     assign mem_req_ready = 1'b1;
+    
+    // Monitor memory requests
+    int mem_req_count = 0;
+    always @(posedge clk) begin
+        if (mem_req_valid && mem_req_ready) begin
+            mem_req_count++;
+            if (mem_req_count <= 10) begin
+                $display("[MON] Memory request #%0d: addr=0x%08X", mem_req_count, mem_req_addr);
+            end
+        end
+    end
 
     // Helper task to send RoCC command
     task send_rocc_cmd(
@@ -141,36 +178,41 @@ module tb_warp_integration;
         
         // Ensure clean state
         resp_ready = 1'b0;
+        cmd_valid = 1'b0;
         
         @(posedge clk);
+        
+        // Wait for cmd_ready (FSM must be in IDLE)
+        timeout = 0;
+        while (!cmd_ready && timeout < 200) begin
+            @(posedge clk);
+            timeout++;
+        end
+        if (timeout >= 200) begin
+            $error("[ERROR] Timeout waiting for cmd_ready before sending command!");
+            return;
+        end
+        if (timeout > 0) begin
+            $display("[INFO] Waited %0d cycles for cmd_ready", timeout);
+        end
+        
+        // Send command
         cmd_valid = 1'b1;
         cmd_funct = funct;
         cmd_rs1_data = rs1_data;
         cmd_rs2_data = rs2_data;
         cmd_rd = 5'd1;
         
-        $display("[CMD] Sending %s: rs1=0x%08X, rs2=0x%08X", cmd_name, rs1_data, rs2_data);
-        
-        // Wait for cmd_ready with timeout
-        timeout = 0;
-        while (!cmd_ready && timeout < 100) begin
-            @(posedge clk);
-            timeout++;
-        end
-        if (timeout >= 100) begin
-            $error("[ERROR] Timeout waiting for cmd_ready!");
-            return;
-        end
+        $display("[CMD] Sending %s: rs1=0x%08X, rs2=0x%08X at time %0t", cmd_name, rs1_data, rs2_data, $time);
         
         @(posedge clk);
+        $display("[CMD] Command accepted, clearing cmd_valid at time %0t", $time);
         cmd_valid = 1'b0;
         
-        // Give FSM time to process and reach RESPOND state
-        @(posedge clk);
-        @(posedge clk);
+        // Start listening for response immediately
+        resp_ready = 1'b1;
         
         // Wait for response with timeout
-        resp_ready = 1'b1;
         timeout = 0;
         while (!resp_valid && timeout < 10000) begin
             @(posedge clk);
@@ -185,13 +227,14 @@ module tb_warp_integration;
             return;
         end
         
-        $display("[RESP] Received response: data=0x%08X (after %0d cycles)", resp_data, timeout);
+        $display("[RESP] Received response: data=0x%08X (after %0d cycles) at time %0t", resp_data, timeout, $time);
         @(posedge clk);
         resp_ready = 1'b0;
         
         // Allow FSM to return to IDLE
         @(posedge clk);
         @(posedge clk);
+        $display("[CMD] Command completed at time %0t", $time);
     endtask
 
     // Initialize test memory with simple kernel

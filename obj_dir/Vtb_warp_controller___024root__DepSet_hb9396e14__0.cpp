@@ -84,8 +84,9 @@ VL_INLINE_OPT void Vtb_warp_controller___024root___act_comb__TOP__0(Vtb_warp_con
             vlSelf->tb_warp_controller__DOT__dut__DOT__state_next = 2U;
         }
     } else if ((1U & (IData)(vlSelf->tb_warp_controller__DOT__dut__DOT__state_r))) {
-        if (((IData)(vlSelf->tb_warp_controller__DOT__dut__DOT__inst_count) 
-             >= (IData)(vlSelf->tb_warp_controller__DOT__dut__DOT__kernel_length_r))) {
+        if ((((IData)(vlSelf->tb_warp_controller__DOT__dut__DOT__inst_count) 
+              >= (IData)(vlSelf->tb_warp_controller__DOT__dut__DOT__kernel_length_r)) 
+             & (~ (IData)(vlSelf->tb_warp_controller__DOT__fifo_empty)))) {
             vlSelf->tb_warp_controller__DOT__dut__DOT__state_next = 2U;
         } else if ((1U & (~ (IData)(vlSelf->tb_warp_controller__DOT__mem_ready)))) {
             vlSelf->tb_warp_controller__DOT__dut__DOT__state_next = 3U;

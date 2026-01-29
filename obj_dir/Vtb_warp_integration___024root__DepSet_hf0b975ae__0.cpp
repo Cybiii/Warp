@@ -49,12 +49,12 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
     vlSelf->tb_warp_integration__DOT__resp_ready = 0U;
     co_await vlSelf->__VdlySched.delay(0x186a0ULL, 
                                        nullptr, "tb/tb_warp_integration.sv", 
-                                       235);
+                                       278);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_warp_integration__DOT__rst_n = 1U;
     co_await vlSelf->__VdlySched.delay(0xc350ULL, nullptr, 
                                        "tb/tb_warp_integration.sv", 
-                                       237);
+                                       280);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("\n--- Test 1: Get Status (First) ---\n",0);
     __Vtask_tb_warp_integration__DOT__send_rocc_cmd__0__cmd_name = 
@@ -64,12 +64,36 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
     __Vtask_tb_warp_integration__DOT__send_rocc_cmd__0__funct = 2U;
     {
         vlSelf->tb_warp_integration__DOT__resp_ready = 0U;
+        vlSelf->tb_warp_integration__DOT__cmd_valid = 0U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           145);
+                                                           183);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
+        while (((~ (IData)(vlSelf->tb_warp_integration__DOT__cmd_ready)) 
+                & VL_GTS_III(32, 0xc8U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
+                                                               nullptr, 
+                                                               "@(posedge tb_warp_integration.clk)", 
+                                                               "tb/tb_warp_integration.sv", 
+                                                               188);
+            vlSelf->__Vm_traceActivity[2U] = 1U;
+            vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
+                = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+        }
+        if (VL_UNLIKELY(VL_LTES_III(32, 0xc8U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:192: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for cmd_ready before sending command!\n",0,
+                         64,VL_TIME_UNITED_Q(1000),
+                         -9,vlSymsp->name());
+            VL_STOP_MT("tb/tb_warp_integration.sv", 192, "");
+            goto __Vlabel1;
+        }
+        if (VL_UNLIKELY(VL_LTS_III(32, 0U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            VL_WRITEF_NX("[INFO] Waited %0d cycles for cmd_ready\n",0,
+                         32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+        }
         vlSelf->tb_warp_integration__DOT__cmd_valid = 1U;
         vlSelf->tb_warp_integration__DOT__cmd_funct 
             = __Vtask_tb_warp_integration__DOT__send_rocc_cmd__0__funct;
@@ -78,48 +102,20 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
         vlSelf->tb_warp_integration__DOT__cmd_rs2_data 
             = __Vtask_tb_warp_integration__DOT__send_rocc_cmd__0__rs2_data;
         vlSelf->tb_warp_integration__DOT__cmd_rd = 1U;
-        VL_WRITEF_NX("[CMD] Sending %@: rs1=0x%08x, rs2=0x%08x\n",0,
+        VL_WRITEF_NX("[CMD] Sending %@: rs1=0x%08x, rs2=0x%08x at time %0t\n",0,
                      -1,&(__Vtask_tb_warp_integration__DOT__send_rocc_cmd__0__cmd_name),
                      32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__0__rs1_data,
-                     32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__0__rs2_data);
-        vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
-        while (((~ (IData)(vlSelf->tb_warp_integration__DOT__cmd_ready)) 
-                & VL_GTS_III(32, 0x64U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                               nullptr, 
-                                                               "@(posedge tb_warp_integration.clk)", 
-                                                               "tb/tb_warp_integration.sv", 
-                                                               157);
-            vlSelf->__Vm_traceActivity[2U] = 1U;
-            vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
-                = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
-        }
-        if (VL_UNLIKELY(VL_LTES_III(32, 0x64U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:161: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for cmd_ready!\n",0,
-                         64,VL_TIME_UNITED_Q(1000),
-                         -9,vlSymsp->name());
-            VL_STOP_MT("tb/tb_warp_integration.sv", 161, "");
-            goto __Vlabel1;
-        }
+                     32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__0__rs2_data,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           165);
+                                                           208);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        VL_WRITEF_NX("[CMD] Command accepted, clearing cmd_valid at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         vlSelf->tb_warp_integration__DOT__cmd_valid = 0U;
-        co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                           nullptr, 
-                                                           "@(posedge tb_warp_integration.clk)", 
-                                                           "tb/tb_warp_integration.sv", 
-                                                           169);
-        vlSelf->__Vm_traceActivity[2U] = 1U;
-        co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                           nullptr, 
-                                                           "@(posedge tb_warp_integration.clk)", 
-                                                           "tb/tb_warp_integration.sv", 
-                                                           170);
-        vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->tb_warp_integration__DOT__resp_ready = 1U;
         vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
         while (((~ (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r)) 
@@ -128,7 +124,7 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
                                                                nullptr, 
                                                                "@(posedge tb_warp_integration.clk)", 
                                                                "tb/tb_warp_integration.sv", 
-                                                               176);
+                                                               218);
             vlSelf->__Vm_traceActivity[2U] = 1U;
             vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
                 = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
@@ -138,34 +134,37 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
             }
         }
         if (VL_UNLIKELY(VL_LTES_III(32, 0x2710U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:184: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for resp_valid!\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:226: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for resp_valid!\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name());
-            VL_STOP_MT("tb/tb_warp_integration.sv", 184, "");
+            VL_STOP_MT("tb/tb_warp_integration.sv", 226, "");
             goto __Vlabel1;
         }
-        VL_WRITEF_NX("[RESP] Received response: data=0x%08x (after %0d cycles)\n",0,
+        VL_WRITEF_NX("[RESP] Received response: data=0x%08x (after %0d cycles) at time %0t\n",0,
                      32,vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_data_r,
-                     32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+                     32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           189);
+                                                           231);
         vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->tb_warp_integration__DOT__resp_ready = 0U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           193);
+                                                           235);
         vlSelf->__Vm_traceActivity[2U] = 1U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           194);
+                                                           236);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        VL_WRITEF_NX("[CMD] Command completed at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         __Vlabel1: ;
     }
     vlSelf->tb_warp_integration__DOT__test_count = 
@@ -192,12 +191,36 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
     __Vtask_tb_warp_integration__DOT__send_rocc_cmd__1__funct = 1U;
     {
         vlSelf->tb_warp_integration__DOT__resp_ready = 0U;
+        vlSelf->tb_warp_integration__DOT__cmd_valid = 0U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           145);
+                                                           183);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
+        while (((~ (IData)(vlSelf->tb_warp_integration__DOT__cmd_ready)) 
+                & VL_GTS_III(32, 0xc8U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
+                                                               nullptr, 
+                                                               "@(posedge tb_warp_integration.clk)", 
+                                                               "tb/tb_warp_integration.sv", 
+                                                               188);
+            vlSelf->__Vm_traceActivity[2U] = 1U;
+            vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
+                = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+        }
+        if (VL_UNLIKELY(VL_LTES_III(32, 0xc8U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:192: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for cmd_ready before sending command!\n",0,
+                         64,VL_TIME_UNITED_Q(1000),
+                         -9,vlSymsp->name());
+            VL_STOP_MT("tb/tb_warp_integration.sv", 192, "");
+            goto __Vlabel2;
+        }
+        if (VL_UNLIKELY(VL_LTS_III(32, 0U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            VL_WRITEF_NX("[INFO] Waited %0d cycles for cmd_ready\n",0,
+                         32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+        }
         vlSelf->tb_warp_integration__DOT__cmd_valid = 1U;
         vlSelf->tb_warp_integration__DOT__cmd_funct 
             = __Vtask_tb_warp_integration__DOT__send_rocc_cmd__1__funct;
@@ -206,48 +229,20 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
         vlSelf->tb_warp_integration__DOT__cmd_rs2_data 
             = __Vtask_tb_warp_integration__DOT__send_rocc_cmd__1__rs2_data;
         vlSelf->tb_warp_integration__DOT__cmd_rd = 1U;
-        VL_WRITEF_NX("[CMD] Sending %@: rs1=0x%08x, rs2=0x%08x\n",0,
+        VL_WRITEF_NX("[CMD] Sending %@: rs1=0x%08x, rs2=0x%08x at time %0t\n",0,
                      -1,&(__Vtask_tb_warp_integration__DOT__send_rocc_cmd__1__cmd_name),
                      32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__1__rs1_data,
-                     32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__1__rs2_data);
-        vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
-        while (((~ (IData)(vlSelf->tb_warp_integration__DOT__cmd_ready)) 
-                & VL_GTS_III(32, 0x64U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                               nullptr, 
-                                                               "@(posedge tb_warp_integration.clk)", 
-                                                               "tb/tb_warp_integration.sv", 
-                                                               157);
-            vlSelf->__Vm_traceActivity[2U] = 1U;
-            vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
-                = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
-        }
-        if (VL_UNLIKELY(VL_LTES_III(32, 0x64U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:161: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for cmd_ready!\n",0,
-                         64,VL_TIME_UNITED_Q(1000),
-                         -9,vlSymsp->name());
-            VL_STOP_MT("tb/tb_warp_integration.sv", 161, "");
-            goto __Vlabel2;
-        }
+                     32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__1__rs2_data,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           165);
+                                                           208);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        VL_WRITEF_NX("[CMD] Command accepted, clearing cmd_valid at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         vlSelf->tb_warp_integration__DOT__cmd_valid = 0U;
-        co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                           nullptr, 
-                                                           "@(posedge tb_warp_integration.clk)", 
-                                                           "tb/tb_warp_integration.sv", 
-                                                           169);
-        vlSelf->__Vm_traceActivity[2U] = 1U;
-        co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                           nullptr, 
-                                                           "@(posedge tb_warp_integration.clk)", 
-                                                           "tb/tb_warp_integration.sv", 
-                                                           170);
-        vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->tb_warp_integration__DOT__resp_ready = 1U;
         vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
         while (((~ (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r)) 
@@ -256,7 +251,7 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
                                                                nullptr, 
                                                                "@(posedge tb_warp_integration.clk)", 
                                                                "tb/tb_warp_integration.sv", 
-                                                               176);
+                                                               218);
             vlSelf->__Vm_traceActivity[2U] = 1U;
             vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
                 = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
@@ -266,34 +261,37 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
             }
         }
         if (VL_UNLIKELY(VL_LTES_III(32, 0x2710U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:184: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for resp_valid!\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:226: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for resp_valid!\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name());
-            VL_STOP_MT("tb/tb_warp_integration.sv", 184, "");
+            VL_STOP_MT("tb/tb_warp_integration.sv", 226, "");
             goto __Vlabel2;
         }
-        VL_WRITEF_NX("[RESP] Received response: data=0x%08x (after %0d cycles)\n",0,
+        VL_WRITEF_NX("[RESP] Received response: data=0x%08x (after %0d cycles) at time %0t\n",0,
                      32,vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_data_r,
-                     32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+                     32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           189);
+                                                           231);
         vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->tb_warp_integration__DOT__resp_ready = 0U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           193);
+                                                           235);
         vlSelf->__Vm_traceActivity[2U] = 1U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           194);
+                                                           236);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        VL_WRITEF_NX("[CMD] Command completed at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         __Vlabel2: ;
     }
     vlSelf->tb_warp_integration__DOT__test_count = 
@@ -308,12 +306,36 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
     __Vtask_tb_warp_integration__DOT__send_rocc_cmd__2__funct = 0U;
     {
         vlSelf->tb_warp_integration__DOT__resp_ready = 0U;
+        vlSelf->tb_warp_integration__DOT__cmd_valid = 0U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           145);
+                                                           183);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
+        while (((~ (IData)(vlSelf->tb_warp_integration__DOT__cmd_ready)) 
+                & VL_GTS_III(32, 0xc8U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
+                                                               nullptr, 
+                                                               "@(posedge tb_warp_integration.clk)", 
+                                                               "tb/tb_warp_integration.sv", 
+                                                               188);
+            vlSelf->__Vm_traceActivity[2U] = 1U;
+            vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
+                = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+        }
+        if (VL_UNLIKELY(VL_LTES_III(32, 0xc8U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:192: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for cmd_ready before sending command!\n",0,
+                         64,VL_TIME_UNITED_Q(1000),
+                         -9,vlSymsp->name());
+            VL_STOP_MT("tb/tb_warp_integration.sv", 192, "");
+            goto __Vlabel3;
+        }
+        if (VL_UNLIKELY(VL_LTS_III(32, 0U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            VL_WRITEF_NX("[INFO] Waited %0d cycles for cmd_ready\n",0,
+                         32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+        }
         vlSelf->tb_warp_integration__DOT__cmd_valid = 1U;
         vlSelf->tb_warp_integration__DOT__cmd_funct 
             = __Vtask_tb_warp_integration__DOT__send_rocc_cmd__2__funct;
@@ -322,48 +344,20 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
         vlSelf->tb_warp_integration__DOT__cmd_rs2_data 
             = __Vtask_tb_warp_integration__DOT__send_rocc_cmd__2__rs2_data;
         vlSelf->tb_warp_integration__DOT__cmd_rd = 1U;
-        VL_WRITEF_NX("[CMD] Sending %@: rs1=0x%08x, rs2=0x%08x\n",0,
+        VL_WRITEF_NX("[CMD] Sending %@: rs1=0x%08x, rs2=0x%08x at time %0t\n",0,
                      -1,&(__Vtask_tb_warp_integration__DOT__send_rocc_cmd__2__cmd_name),
                      32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__2__rs1_data,
-                     32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__2__rs2_data);
-        vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
-        while (((~ (IData)(vlSelf->tb_warp_integration__DOT__cmd_ready)) 
-                & VL_GTS_III(32, 0x64U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                               nullptr, 
-                                                               "@(posedge tb_warp_integration.clk)", 
-                                                               "tb/tb_warp_integration.sv", 
-                                                               157);
-            vlSelf->__Vm_traceActivity[2U] = 1U;
-            vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
-                = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
-        }
-        if (VL_UNLIKELY(VL_LTES_III(32, 0x64U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:161: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for cmd_ready!\n",0,
-                         64,VL_TIME_UNITED_Q(1000),
-                         -9,vlSymsp->name());
-            VL_STOP_MT("tb/tb_warp_integration.sv", 161, "");
-            goto __Vlabel3;
-        }
+                     32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__2__rs2_data,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           165);
+                                                           208);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        VL_WRITEF_NX("[CMD] Command accepted, clearing cmd_valid at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         vlSelf->tb_warp_integration__DOT__cmd_valid = 0U;
-        co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                           nullptr, 
-                                                           "@(posedge tb_warp_integration.clk)", 
-                                                           "tb/tb_warp_integration.sv", 
-                                                           169);
-        vlSelf->__Vm_traceActivity[2U] = 1U;
-        co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                           nullptr, 
-                                                           "@(posedge tb_warp_integration.clk)", 
-                                                           "tb/tb_warp_integration.sv", 
-                                                           170);
-        vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->tb_warp_integration__DOT__resp_ready = 1U;
         vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
         while (((~ (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r)) 
@@ -372,7 +366,7 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
                                                                nullptr, 
                                                                "@(posedge tb_warp_integration.clk)", 
                                                                "tb/tb_warp_integration.sv", 
-                                                               176);
+                                                               218);
             vlSelf->__Vm_traceActivity[2U] = 1U;
             vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
                 = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
@@ -382,34 +376,37 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
             }
         }
         if (VL_UNLIKELY(VL_LTES_III(32, 0x2710U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:184: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for resp_valid!\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:226: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for resp_valid!\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name());
-            VL_STOP_MT("tb/tb_warp_integration.sv", 184, "");
+            VL_STOP_MT("tb/tb_warp_integration.sv", 226, "");
             goto __Vlabel3;
         }
-        VL_WRITEF_NX("[RESP] Received response: data=0x%08x (after %0d cycles)\n",0,
+        VL_WRITEF_NX("[RESP] Received response: data=0x%08x (after %0d cycles) at time %0t\n",0,
                      32,vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_data_r,
-                     32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+                     32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           189);
+                                                           231);
         vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->tb_warp_integration__DOT__resp_ready = 0U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           193);
+                                                           235);
         vlSelf->__Vm_traceActivity[2U] = 1U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           194);
+                                                           236);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        VL_WRITEF_NX("[CMD] Command completed at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         __Vlabel3: ;
     }
     vlSelf->tb_warp_integration__DOT__test_count = 
@@ -419,7 +416,7 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
     VL_WRITEF_NX("[INFO] Kernel execution completed!\n",0);
     co_await vlSelf->__VdlySched.delay(0xf4240ULL, 
                                        nullptr, "tb/tb_warp_integration.sv", 
-                                       263);
+                                       306);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("\n--- Test 4: Check Final Status ---\n",0);
     __Vtask_tb_warp_integration__DOT__send_rocc_cmd__3__cmd_name = 
@@ -429,12 +426,36 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
     __Vtask_tb_warp_integration__DOT__send_rocc_cmd__3__funct = 2U;
     {
         vlSelf->tb_warp_integration__DOT__resp_ready = 0U;
+        vlSelf->tb_warp_integration__DOT__cmd_valid = 0U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           145);
+                                                           183);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
+        while (((~ (IData)(vlSelf->tb_warp_integration__DOT__cmd_ready)) 
+                & VL_GTS_III(32, 0xc8U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
+                                                               nullptr, 
+                                                               "@(posedge tb_warp_integration.clk)", 
+                                                               "tb/tb_warp_integration.sv", 
+                                                               188);
+            vlSelf->__Vm_traceActivity[2U] = 1U;
+            vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
+                = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+        }
+        if (VL_UNLIKELY(VL_LTES_III(32, 0xc8U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:192: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for cmd_ready before sending command!\n",0,
+                         64,VL_TIME_UNITED_Q(1000),
+                         -9,vlSymsp->name());
+            VL_STOP_MT("tb/tb_warp_integration.sv", 192, "");
+            goto __Vlabel4;
+        }
+        if (VL_UNLIKELY(VL_LTS_III(32, 0U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
+            VL_WRITEF_NX("[INFO] Waited %0d cycles for cmd_ready\n",0,
+                         32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+        }
         vlSelf->tb_warp_integration__DOT__cmd_valid = 1U;
         vlSelf->tb_warp_integration__DOT__cmd_funct 
             = __Vtask_tb_warp_integration__DOT__send_rocc_cmd__3__funct;
@@ -443,48 +464,20 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
         vlSelf->tb_warp_integration__DOT__cmd_rs2_data 
             = __Vtask_tb_warp_integration__DOT__send_rocc_cmd__3__rs2_data;
         vlSelf->tb_warp_integration__DOT__cmd_rd = 1U;
-        VL_WRITEF_NX("[CMD] Sending %@: rs1=0x%08x, rs2=0x%08x\n",0,
+        VL_WRITEF_NX("[CMD] Sending %@: rs1=0x%08x, rs2=0x%08x at time %0t\n",0,
                      -1,&(__Vtask_tb_warp_integration__DOT__send_rocc_cmd__3__cmd_name),
                      32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__3__rs1_data,
-                     32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__3__rs2_data);
-        vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
-        while (((~ (IData)(vlSelf->tb_warp_integration__DOT__cmd_ready)) 
-                & VL_GTS_III(32, 0x64U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                               nullptr, 
-                                                               "@(posedge tb_warp_integration.clk)", 
-                                                               "tb/tb_warp_integration.sv", 
-                                                               157);
-            vlSelf->__Vm_traceActivity[2U] = 1U;
-            vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
-                = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
-        }
-        if (VL_UNLIKELY(VL_LTES_III(32, 0x64U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:161: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for cmd_ready!\n",0,
-                         64,VL_TIME_UNITED_Q(1000),
-                         -9,vlSymsp->name());
-            VL_STOP_MT("tb/tb_warp_integration.sv", 161, "");
-            goto __Vlabel4;
-        }
+                     32,__Vtask_tb_warp_integration__DOT__send_rocc_cmd__3__rs2_data,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           165);
+                                                           208);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        VL_WRITEF_NX("[CMD] Command accepted, clearing cmd_valid at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         vlSelf->tb_warp_integration__DOT__cmd_valid = 0U;
-        co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                           nullptr, 
-                                                           "@(posedge tb_warp_integration.clk)", 
-                                                           "tb/tb_warp_integration.sv", 
-                                                           169);
-        vlSelf->__Vm_traceActivity[2U] = 1U;
-        co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
-                                                           nullptr, 
-                                                           "@(posedge tb_warp_integration.clk)", 
-                                                           "tb/tb_warp_integration.sv", 
-                                                           170);
-        vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->tb_warp_integration__DOT__resp_ready = 1U;
         vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0U;
         while (((~ (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r)) 
@@ -493,7 +486,7 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
                                                                nullptr, 
                                                                "@(posedge tb_warp_integration.clk)", 
                                                                "tb/tb_warp_integration.sv", 
-                                                               176);
+                                                               218);
             vlSelf->__Vm_traceActivity[2U] = 1U;
             vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout 
                 = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
@@ -503,34 +496,37 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
             }
         }
         if (VL_UNLIKELY(VL_LTES_III(32, 0x2710U, vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout))) {
-            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:184: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for resp_valid!\n",0,
+            VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:226: Assertion failed in %Ntb_warp_integration.send_rocc_cmd: [ERROR] Timeout waiting for resp_valid!\n",0,
                          64,VL_TIME_UNITED_Q(1000),
                          -9,vlSymsp->name());
-            VL_STOP_MT("tb/tb_warp_integration.sv", 184, "");
+            VL_STOP_MT("tb/tb_warp_integration.sv", 226, "");
             goto __Vlabel4;
         }
-        VL_WRITEF_NX("[RESP] Received response: data=0x%08x (after %0d cycles)\n",0,
+        VL_WRITEF_NX("[RESP] Received response: data=0x%08x (after %0d cycles) at time %0t\n",0,
                      32,vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_data_r,
-                     32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout);
+                     32,vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           189);
+                                                           231);
         vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->tb_warp_integration__DOT__resp_ready = 0U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           193);
+                                                           235);
         vlSelf->__Vm_traceActivity[2U] = 1U;
         co_await vlSelf->__VtrigSched_hce2080ec__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_warp_integration.clk)", 
                                                            "tb/tb_warp_integration.sv", 
-                                                           194);
+                                                           236);
         vlSelf->__Vm_traceActivity[2U] = 1U;
+        VL_WRITEF_NX("[CMD] Command completed at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
         __Vlabel4: ;
     }
     vlSelf->tb_warp_integration__DOT__test_count = 
@@ -552,7 +548,7 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
     }
     co_await vlSelf->__VdlySched.delay(0x186a0ULL, 
                                        nullptr, "tb/tb_warp_integration.sv", 
-                                       275);
+                                       318);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("\n========================================\nTest Summary\n========================================\nTotal Tests: %0d\nPassed:      %0d\nFailed:      %0d\n========================================\n",0,
                  32,vlSelf->tb_warp_integration__DOT__test_count,
@@ -561,15 +557,15 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
     if (VL_LIKELY((0U == vlSelf->tb_warp_integration__DOT__fail_count))) {
         VL_WRITEF_NX("ALL TESTS PASSED!\n",0);
     } else {
-        VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:287: Assertion failed in %Ntb_warp_integration: SOME TESTS FAILED!\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:330: Assertion failed in %Ntb_warp_integration: SOME TESTS FAILED!\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        VL_STOP_MT("tb/tb_warp_integration.sv", 287, "");
+        VL_STOP_MT("tb/tb_warp_integration.sv", 330, "");
     }
     co_await vlSelf->__VdlySched.delay(0x186a0ULL, 
                                        nullptr, "tb/tb_warp_integration.sv", 
-                                       290);
+                                       333);
     vlSelf->__Vm_traceActivity[2U] = 1U;
-    VL_FINISH_MT("tb/tb_warp_integration.sv", 291, "");
+    VL_FINISH_MT("tb/tb_warp_integration.sv", 334, "");
     vlSelf->__Vm_traceActivity[2U] = 1U;
 }
 
@@ -580,11 +576,11 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
     // Body
     co_await vlSelf->__VdlySched.delay(0xbebc200ULL, 
                                        nullptr, "tb/tb_warp_integration.sv", 
-                                       296);
-    VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:297: Assertion failed in %Ntb_warp_integration: TEST TIMEOUT!\n",0,
+                                       339);
+    VL_WRITEF_NX("[%0t] %%Error: tb_warp_integration.sv:340: Assertion failed in %Ntb_warp_integration: TEST TIMEOUT!\n",0,
                  64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-    VL_STOP_MT("tb/tb_warp_integration.sv", 297, "");
-    VL_FINISH_MT("tb/tb_warp_integration.sv", 298, "");
+    VL_STOP_MT("tb/tb_warp_integration.sv", 340, "");
+    VL_FINISH_MT("tb/tb_warp_integration.sv", 341, "");
 }
 
 #ifdef VL_DEBUG

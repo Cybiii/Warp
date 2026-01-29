@@ -36,7 +36,7 @@ VL_INLINE_OPT VlCoroutine Vtb_warp_integration___024root___eval_initial__TOP__Vt
         co_await vlSelf->__VdlySched.delay(0x1388ULL, 
                                            nullptr, 
                                            "tb/tb_warp_integration.sv", 
-                                           112);
+                                           138);
         vlSelf->tb_warp_integration__DOT__clk = (1U 
                                                  & (~ (IData)(vlSelf->tb_warp_integration__DOT__clk)));
     }
@@ -83,7 +83,6 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__0(Vtb_warp
     Vtb_warp_integration__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_warp_integration___024root___nba_sequent__TOP__0\n"); );
     // Body
-    vlSelf->__Vdlyvset__tb_warp_integration__DOT__test_mem__v0 = 0U;
     if (VL_UNLIKELY(((IData)(vlSelf->tb_warp_integration__DOT__cmd_ready) 
                      & (IData)(vlSelf->tb_warp_integration__DOT___Vpast_0_0)))) {
         VL_WRITEF_NX("[MON] cmd_ready went HIGH at time %0t\n",0,
@@ -99,12 +98,51 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__0(Vtb_warp
                      & (0U == (IData)(vlSelf->tb_warp_integration__DOT__cmd_funct))))) {
         VL_WRITEF_NX("[MON] KERNEL_START sent, monitoring kernel signals...\n",0);
     }
+    if (((0x493e0ULL <= VL_TIME_UNITED_Q(1000)) & (0xaae60ULL 
+                                                   >= VL_TIME_UNITED_Q(1000)))) {
+        if (VL_UNLIKELY((1U & (((~ (IData)(vlSelf->tb_warp_integration__DOT__cmd_ready)) 
+                                | (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r)) 
+                               | (IData)(vlSelf->tb_warp_integration__DOT__cmd_valid))))) {
+            VL_WRITEF_NX("[DETAIL] t=%0t: cmd_valid=%b, cmd_ready=%b, resp_valid=%b, resp_ready=%b, mem_req_valid=%b\n",0,
+                         64,VL_TIME_UNITED_Q(1000),
+                         -9,1,(IData)(vlSelf->tb_warp_integration__DOT__cmd_valid),
+                         1,vlSelf->tb_warp_integration__DOT__cmd_ready,
+                         1,(IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r),
+                         1,vlSelf->tb_warp_integration__DOT__resp_ready,
+                         1,(IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__ctrl_mem_req));
+        }
+    }
+    if (VL_UNLIKELY(((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r) 
+                     & (IData)(vlSelf->tb_warp_integration__DOT__resp_ready)))) {
+        VL_WRITEF_NX("[MON] Response handshake completed at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
+    }
+    if (VL_UNLIKELY(((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r) 
+                     & (~ (IData)(vlSelf->tb_warp_integration__DOT___Vpast_2_0))))) {
+        VL_WRITEF_NX("[MON] resp_valid went HIGH at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
+    }
+    if (VL_UNLIKELY(((~ (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r)) 
+                     & (IData)(vlSelf->tb_warp_integration__DOT___Vpast_3_0)))) {
+        VL_WRITEF_NX("[MON] resp_valid went LOW at time %0t\n",0,
+                     64,VL_TIME_UNITED_Q(1000),-9);
+    }
+    if (vlSelf->tb_warp_integration__DOT__dut__DOT__ctrl_mem_req) {
+        vlSelf->tb_warp_integration__DOT__mem_req_count 
+            = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__mem_req_count);
+        if (VL_UNLIKELY(VL_GTES_III(32, 0xaU, vlSelf->tb_warp_integration__DOT__mem_req_count))) {
+            VL_WRITEF_NX("[MON] Memory request #%0d: addr=0x%08x\n",0,
+                         32,vlSelf->tb_warp_integration__DOT__mem_req_count,
+                         32,vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr);
+        }
+    }
     if (((~ (IData)(vlSelf->tb_warp_integration__DOT__cmd_ready)) 
          & (IData)(vlSelf->tb_warp_integration__DOT__rst_n))) {
         vlSelf->tb_warp_integration__DOT__monitor_counter 
             = ((IData)(1U) + vlSelf->tb_warp_integration__DOT__monitor_counter);
-        if (VL_UNLIKELY((0U == VL_MODDIVS_III(32, vlSelf->tb_warp_integration__DOT__monitor_counter, (IData)(0x64U))))) {
-            VL_WRITEF_NX("[MON] Waiting for cmd_ready (stuck for %0d cycles)... resp_valid=%b, resp_ready=%b, cmd_valid=%b\n",0,
+        if (VL_UNLIKELY(((0xaU == vlSelf->tb_warp_integration__DOT__monitor_counter) 
+                         | (0U == VL_MODDIVS_III(32, vlSelf->tb_warp_integration__DOT__monitor_counter, (IData)(0x64U)))))) {
+            VL_WRITEF_NX("[MON] Waiting for cmd_ready (stuck for %0d cycles)... resp_valid=%b, resp_ready=%b, cmd_valid=%b\n[MON]   Internal state access attempt...\n",0,
                          32,vlSelf->tb_warp_integration__DOT__monitor_counter,
                          1,(IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r),
                          1,vlSelf->tb_warp_integration__DOT__resp_ready,
@@ -116,6 +154,8 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__0(Vtb_warp
     vlSelf->tb_warp_integration__DOT___Vpast_0_0 = 
         (1U & (~ (IData)(vlSelf->__Vsampled__TOP__tb_warp_integration__DOT__cmd_ready)));
     vlSelf->tb_warp_integration__DOT___Vpast_1_0 = vlSelf->__Vsampled__TOP__tb_warp_integration__DOT__cmd_ready;
+    vlSelf->tb_warp_integration__DOT___Vpast_2_0 = vlSelf->__Vsampled__TOP__tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r;
+    vlSelf->tb_warp_integration__DOT___Vpast_3_0 = vlSelf->__Vsampled__TOP__tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r;
 }
 
 VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp_integration___024root* vlSelf) {
@@ -283,8 +323,6 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
     __Vfunc_get_imm__43__Vfuncout = 0;
     IData/*31:0*/ __Vfunc_get_imm__43__inst;
     __Vfunc_get_imm__43__inst = 0;
-    IData/*31:0*/ __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr;
-    __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr = 0;
     SData/*15:0*/ __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count;
     __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count = 0;
     CData/*3:0*/ __Vdlyvdim0__tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__fifo_mem__v0;
@@ -372,10 +410,10 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
     // Body
     __Vdly__tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__read_ptr 
         = vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__read_ptr;
-    __Vdly__tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__count 
-        = vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__count;
     __Vdly__tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__write_ptr 
         = vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__write_ptr;
+    __Vdly__tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__count 
+        = vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__count;
     __Vdlyvset__tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__fifo_mem__v0 = 0U;
     __Vdlyvset__tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__fifo_mem__v1 = 0U;
     __Vdlyvset__tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__rf_inst__DOT__registers__v0 = 0U;
@@ -394,7 +432,7 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
     __Vdlyvset__tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__1__KET____DOT__lane_inst__DOT__rf_inst__DOT__registers__v1 = 0U;
     __Vdlyvset__tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__0__KET____DOT__lane_inst__DOT__rf_inst__DOT__registers__v0 = 0U;
     __Vdlyvset__tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__0__KET____DOT__lane_inst__DOT__rf_inst__DOT__registers__v1 = 0U;
-    __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr 
+    vlSelf->__Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr 
         = vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr;
     __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count 
         = vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count;
@@ -540,7 +578,7 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
                 = vlSelf->tb_warp_integration__DOT__dut__DOT__kernel_addr;
             vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_length_r 
                 = vlSelf->tb_warp_integration__DOT__dut__DOT__kernel_length;
-            __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr 
+            vlSelf->__Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr 
                 = vlSelf->tb_warp_integration__DOT__dut__DOT__kernel_addr;
             __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count = 0U;
         } else if ((0U != (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r))) {
@@ -551,7 +589,7 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
              & (~ (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_pop)))) {
             __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count 
                 = (0xffffU & ((IData)(1U) + (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count)));
-            __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr 
+            vlSelf->__Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr 
                 = ((IData)(4U) + vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr);
         }
         if ((((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__lane_execute) 
@@ -602,8 +640,7 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
             vlSelf->tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__0__KET____DOT__lane_inst__DOT__inst_r 
                 = vlSelf->tb_warp_integration__DOT__dut__DOT__lane_instruction;
         }
-        if ((3U == (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__cmd_state_r))) {
-            vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r = 1U;
+        if ((1U == (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__cmd_state_r))) {
             vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_data_r 
                 = ((2U == (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__opcode_r))
                     ? (((0U == (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r)) 
@@ -615,7 +652,12 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
                                                 | (0U 
                                                    == (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__count))))))
                     : 0U);
-        } else if (vlSelf->tb_warp_integration__DOT__resp_ready) {
+        }
+        if (((3U == (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__cmd_state_next)) 
+             & (3U != (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__cmd_state_r)))) {
+            vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r = 1U;
+        } else if (((3U == (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__cmd_state_r)) 
+                    & (0U == (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__cmd_state_next)))) {
             vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r = 0U;
         }
         if (((0U == (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__cmd_state_r)) 
@@ -666,7 +708,7 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
         __Vdlyvset__tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__1__KET____DOT__lane_inst__DOT__rf_inst__DOT__registers__v1 = 1U;
         __Vdlyvset__tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__0__KET____DOT__lane_inst__DOT__rf_inst__DOT__registers__v1 = 1U;
         __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count = 0U;
-        __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr = 0U;
+        vlSelf->__Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr = 0U;
         vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_start_r = 0U;
         vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_addr_r = 0U;
         vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_length_r = 0U;
@@ -1012,8 +1054,6 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
         vlSelf->tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__0__KET____DOT__lane_inst__DOT__rf_inst__DOT__registers[0x1eU] = 0U;
         vlSelf->tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__0__KET____DOT__lane_inst__DOT__rf_inst__DOT__registers[0x1fU] = 0U;
     }
-    vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr 
-        = __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr;
     vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count 
         = __Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count;
     vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__count 
@@ -2010,7 +2050,6 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
             }
         }
     }
-    vlSelf->tb_warp_integration__DOT__dut__DOT__ctrl_mem_req = 0U;
     vlSelf->tb_warp_integration__DOT__dut__DOT__kernel_done = 0U;
     vlSelf->tb_warp_integration__DOT__dut__DOT__kernel_error = 0U;
     vlSelf->tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__rf_write_data = 0U;
@@ -2084,6 +2123,22 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
     }
     vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_pop = 0U;
     vlSelf->tb_warp_integration__DOT__dut__DOT__lane_instruction = 0U;
+    vlSelf->tb_warp_integration__DOT__dut__DOT__lane_execute = 0U;
+    if ((1U & (~ ((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r) 
+                  >> 2U)))) {
+        if ((2U & (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r))) {
+            if ((1U & (~ (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r)))) {
+                if (((0U != (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__count)) 
+                     & (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__lane_ready))) {
+                    vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_pop = 1U;
+                    vlSelf->tb_warp_integration__DOT__dut__DOT__lane_instruction 
+                        = vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__fifo_mem
+                        [vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__read_ptr];
+                    vlSelf->tb_warp_integration__DOT__dut__DOT__lane_execute = 1U;
+                }
+            }
+        }
+    }
     vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_next 
         = vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r;
     if ((4U & (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r))) {
@@ -2117,36 +2172,13 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__1(Vtb_warp
             vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_next = 2U;
         }
     } else if ((1U & (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r))) {
-        if (((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count) 
-             >= (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_length_r))) {
+        if ((((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count) 
+              >= (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_length_r)) 
+             & (0U != (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__count)))) {
             vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_next = 2U;
         }
     } else if (vlSelf->tb_warp_integration__DOT__dut__DOT__kernel_start) {
         vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_next = 1U;
-    }
-    vlSelf->tb_warp_integration__DOT__dut__DOT__lane_execute = 0U;
-    if ((1U & (~ ((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r) 
-                  >> 2U)))) {
-        if ((1U & (~ ((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r) 
-                      >> 1U)))) {
-            if ((1U & (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r))) {
-                vlSelf->tb_warp_integration__DOT__dut__DOT__ctrl_mem_req 
-                    = ((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count) 
-                       < (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_length_r));
-            }
-        }
-        if ((2U & (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r))) {
-            if ((1U & (~ (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r)))) {
-                if (((0U != (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__count)) 
-                     & (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__lane_ready))) {
-                    vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_pop = 1U;
-                    vlSelf->tb_warp_integration__DOT__dut__DOT__lane_instruction 
-                        = vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__fifo_mem
-                        [vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__read_ptr];
-                    vlSelf->tb_warp_integration__DOT__dut__DOT__lane_execute = 1U;
-                }
-            }
-        }
     }
     vlSelf->tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__0__KET____DOT__lane_inst__DOT__state_next 
         = vlSelf->tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__0__KET____DOT__lane_inst__DOT__state_r;
@@ -2321,41 +2353,41 @@ VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__2(Vtb_warp
     (void)vlSelf;  // Prevent unused variable warning
     Vtb_warp_integration__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_warp_integration___024root___nba_sequent__TOP__2\n"); );
-    // Init
-    SData/*9:0*/ __Vdlyvdim0__tb_warp_integration__DOT__test_mem__v0;
-    __Vdlyvdim0__tb_warp_integration__DOT__test_mem__v0 = 0;
-    IData/*31:0*/ __Vdlyvval__tb_warp_integration__DOT__test_mem__v0;
-    __Vdlyvval__tb_warp_integration__DOT__test_mem__v0 = 0;
     // Body
-    if (vlSelf->tb_warp_integration__DOT__mem_req_valid) {
-        if (vlSelf->tb_warp_integration__DOT__mem_req_write) {
-            VL_WRITEF_NX("[MEM] Write: addr=0x%08x, data=0x%08x\n",0,
-                         32,vlSelf->tb_warp_integration__DOT__mem_req_addr,
-                         32,vlSelf->tb_warp_integration__DOT__mem_req_data);
-            __Vdlyvval__tb_warp_integration__DOT__test_mem__v0 
-                = vlSelf->tb_warp_integration__DOT__mem_req_data;
-            vlSelf->__Vdlyvset__tb_warp_integration__DOT__test_mem__v0 = 1U;
-            __Vdlyvdim0__tb_warp_integration__DOT__test_mem__v0 
-                = (0x3ffU & (vlSelf->tb_warp_integration__DOT__mem_req_addr 
-                             >> 2U));
-        } else {
-            vlSelf->tb_warp_integration__DOT__mem_resp_data 
-                = vlSelf->tb_warp_integration__DOT__test_mem
-                [(0x3ffU & (vlSelf->tb_warp_integration__DOT__mem_req_addr 
-                            >> 2U))];
-            vlSelf->tb_warp_integration__DOT__mem_resp_valid = 1U;
-            VL_WRITEF_NX("[MEM] Read: addr=0x%08x, data=0x%08x\n",0,
-                         32,vlSelf->tb_warp_integration__DOT__mem_req_addr,
-                         32,vlSelf->tb_warp_integration__DOT__test_mem
-                         [(0x3ffU & (vlSelf->tb_warp_integration__DOT__mem_req_addr 
-                                     >> 2U))]);
-        }
+    if (VL_UNLIKELY(vlSelf->tb_warp_integration__DOT__dut__DOT__ctrl_mem_req)) {
+        VL_WRITEF_NX("[MEM] Read: addr=0x%08x, data=0x%08x\n",0,
+                     32,vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr,
+                     32,vlSelf->tb_warp_integration__DOT__test_mem
+                     [(0x3ffU & (vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr 
+                                 >> 2U))]);
+        vlSelf->tb_warp_integration__DOT__mem_resp_data 
+            = vlSelf->tb_warp_integration__DOT__test_mem
+            [(0x3ffU & (vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr 
+                        >> 2U))];
+        vlSelf->tb_warp_integration__DOT__mem_resp_valid = 1U;
     } else {
         vlSelf->tb_warp_integration__DOT__mem_resp_valid = 0U;
     }
-    if (vlSelf->__Vdlyvset__tb_warp_integration__DOT__test_mem__v0) {
-        vlSelf->tb_warp_integration__DOT__test_mem[__Vdlyvdim0__tb_warp_integration__DOT__test_mem__v0] 
-            = __Vdlyvval__tb_warp_integration__DOT__test_mem__v0;
+}
+
+VL_INLINE_OPT void Vtb_warp_integration___024root___nba_sequent__TOP__3(Vtb_warp_integration___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtb_warp_integration__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtb_warp_integration___024root___nba_sequent__TOP__3\n"); );
+    // Body
+    vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr 
+        = vlSelf->__Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr;
+    vlSelf->tb_warp_integration__DOT__dut__DOT__ctrl_mem_req = 0U;
+    if ((1U & (~ ((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r) 
+                  >> 2U)))) {
+        if ((1U & (~ ((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r) 
+                      >> 1U)))) {
+            if ((1U & (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r))) {
+                vlSelf->tb_warp_integration__DOT__dut__DOT__ctrl_mem_req 
+                    = ((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count) 
+                       < (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_length_r));
+            }
+        }
     }
 }
 
@@ -2386,6 +2418,9 @@ void Vtb_warp_integration___024root___eval_nba(Vtb_warp_integration___024root* v
     }
     if ((7ULL & vlSelf->__VnbaTriggered.word(0U))) {
         Vtb_warp_integration___024root___act_comb__TOP__0(vlSelf);
+    }
+    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        Vtb_warp_integration___024root___nba_sequent__TOP__3(vlSelf);
     }
     if ((3ULL & vlSelf->__VnbaTriggered.word(0U))) {
         Vtb_warp_integration___024root___nba_comb__TOP__1(vlSelf);
@@ -2466,6 +2501,8 @@ void Vtb_warp_integration___024root___eval(Vtb_warp_integration___024root* vlSel
     // Init
     vlSelf->__Vsampled__TOP__tb_warp_integration__DOT__cmd_ready 
         = vlSelf->tb_warp_integration__DOT__cmd_ready;
+    vlSelf->__Vsampled__TOP__tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r 
+        = vlSelf->tb_warp_integration__DOT__dut__DOT__rocc_inst__DOT__resp_valid_r;
     IData/*31:0*/ __VnbaIterCount;
     CData/*0:0*/ __VnbaContinue;
     // Body

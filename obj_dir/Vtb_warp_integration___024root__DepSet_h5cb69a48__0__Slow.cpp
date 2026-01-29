@@ -28,6 +28,7 @@ VL_ATTR_COLD void Vtb_warp_integration___024root___eval_static__TOP(Vtb_warp_int
     vlSelf->tb_warp_integration__DOT__pass_count = 0U;
     vlSelf->tb_warp_integration__DOT__fail_count = 0U;
     vlSelf->tb_warp_integration__DOT__monitor_counter = 0U;
+    vlSelf->tb_warp_integration__DOT__mem_req_count = 0U;
 }
 
 VL_ATTR_COLD void Vtb_warp_integration___024root___eval_initial__TOP(Vtb_warp_integration___024root* vlSelf) {
@@ -41,6 +42,7 @@ VL_ATTR_COLD void Vtb_warp_integration___024root___eval_initial__TOP(Vtb_warp_in
     vlSelf->tb_warp_integration__DOT__test_mem[3U] = 0x12044000U;
     vlSelf->tb_warp_integration__DOT__test_mem[4U] = 0x32844000U;
     vlSelf->tb_warp_integration__DOT__test_mem[5U] = 0x43040000U;
+    vlSelf->tb_warp_integration__DOT__mem_resp_ready = 1U;
 }
 
 VL_ATTR_COLD void Vtb_warp_integration___024root___eval_final(Vtb_warp_integration___024root* vlSelf) {
@@ -1385,8 +1387,9 @@ VL_ATTR_COLD void Vtb_warp_integration___024root___stl_sequent__TOP__0(Vtb_warp_
             vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_next = 2U;
         }
     } else if ((1U & (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_r))) {
-        if (((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count) 
-             >= (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_length_r))) {
+        if ((((IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__inst_count) 
+              >= (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__kernel_length_r)) 
+             & (0U != (IData)(vlSelf->tb_warp_integration__DOT__dut__DOT__fifo_inst__DOT__count)))) {
             vlSelf->tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__state_next = 2U;
         }
     } else if (vlSelf->tb_warp_integration__DOT__dut__DOT__kernel_start) {
@@ -1674,11 +1677,8 @@ VL_ATTR_COLD void Vtb_warp_integration___024root___ctor_var_reset(Vtb_warp_integ
     vlSelf->tb_warp_integration__DOT__cmd_rs1_data = VL_RAND_RESET_I(32);
     vlSelf->tb_warp_integration__DOT__cmd_rs2_data = VL_RAND_RESET_I(32);
     vlSelf->tb_warp_integration__DOT__resp_ready = VL_RAND_RESET_I(1);
-    vlSelf->tb_warp_integration__DOT__mem_req_valid = VL_RAND_RESET_I(1);
-    vlSelf->tb_warp_integration__DOT__mem_req_addr = VL_RAND_RESET_I(32);
-    vlSelf->tb_warp_integration__DOT__mem_req_write = VL_RAND_RESET_I(1);
-    vlSelf->tb_warp_integration__DOT__mem_req_data = VL_RAND_RESET_I(32);
     vlSelf->tb_warp_integration__DOT__mem_resp_valid = VL_RAND_RESET_I(1);
+    vlSelf->tb_warp_integration__DOT__mem_resp_ready = VL_RAND_RESET_I(1);
     vlSelf->tb_warp_integration__DOT__mem_resp_data = VL_RAND_RESET_I(32);
     for (int __Vi0 = 0; __Vi0 < 1024; ++__Vi0) {
         vlSelf->tb_warp_integration__DOT__test_mem[__Vi0] = VL_RAND_RESET_I(32);
@@ -1687,9 +1687,12 @@ VL_ATTR_COLD void Vtb_warp_integration___024root___ctor_var_reset(Vtb_warp_integ
     vlSelf->tb_warp_integration__DOT__pass_count = 0;
     vlSelf->tb_warp_integration__DOT__fail_count = 0;
     vlSelf->tb_warp_integration__DOT__monitor_counter = 0;
+    vlSelf->tb_warp_integration__DOT__mem_req_count = 0;
     vlSelf->tb_warp_integration__DOT__send_rocc_cmd__Vstatic__timeout = 0;
     vlSelf->tb_warp_integration__DOT___Vpast_0_0 = VL_RAND_RESET_I(1);
     vlSelf->tb_warp_integration__DOT___Vpast_1_0 = VL_RAND_RESET_I(1);
+    vlSelf->tb_warp_integration__DOT___Vpast_2_0 = VL_RAND_RESET_I(1);
+    vlSelf->tb_warp_integration__DOT___Vpast_3_0 = VL_RAND_RESET_I(1);
     vlSelf->tb_warp_integration__DOT__dut__DOT__kernel_start = VL_RAND_RESET_I(1);
     vlSelf->tb_warp_integration__DOT__dut__DOT__kernel_addr = VL_RAND_RESET_I(32);
     vlSelf->tb_warp_integration__DOT__dut__DOT__kernel_length = VL_RAND_RESET_I(16);
@@ -1928,7 +1931,7 @@ VL_ATTR_COLD void Vtb_warp_integration___024root___ctor_var_reset(Vtb_warp_integ
     vlSelf->tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__alu_inst__DOT__fma_result_ext = VL_RAND_RESET_Q(33);
     vlSelf->tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__alu_inst__DOT__mul_ovf = VL_RAND_RESET_I(1);
     vlSelf->tb_warp_integration__DOT__dut__DOT__lanes_inst__DOT__gen_lanes__BRA__7__KET____DOT__lane_inst__DOT__alu_inst__DOT__add_ovf = VL_RAND_RESET_I(1);
-    vlSelf->__Vdlyvset__tb_warp_integration__DOT__test_mem__v0 = 0;
+    vlSelf->__Vdly__tb_warp_integration__DOT__dut__DOT__controller_inst__DOT__fetch_addr = VL_RAND_RESET_I(32);
     vlSelf->__Vtrigprevexpr___TOP__tb_warp_integration__DOT__clk__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__tb_warp_integration__DOT__rst_n__0 = VL_RAND_RESET_I(1);
     for (int __Vi0 = 0; __Vi0 < 4; ++__Vi0) {

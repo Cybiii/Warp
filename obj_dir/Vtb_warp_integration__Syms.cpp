@@ -18,7 +18,7 @@ Vtb_warp_integration__Syms::Vtb_warp_integration__Syms(VerilatedContext* context
     , TOP{this, namep}
 {
         // Check resources
-        Verilated::stackCheck(1148);
+        Verilated::stackCheck(1128);
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-9);
     _vm_contextp__->timeprecision(-12);

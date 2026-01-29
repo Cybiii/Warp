@@ -73,6 +73,7 @@ module warp_engine #(
     
     // Controller to Memory (for instruction fetch)
     logic        ctrl_mem_req;
+    logic [31:0] ctrl_mem_addr;
     logic        ctrl_mem_ready;
     logic        ctrl_mem_valid;
     
@@ -139,6 +140,7 @@ module warp_engine #(
         .lane_instruction(lane_instruction),
         .lane_ready(lane_ready),
         .mem_req(ctrl_mem_req),
+        .mem_addr(ctrl_mem_addr),
         .mem_ready(ctrl_mem_ready),
         .mem_valid(ctrl_mem_valid),
         .state(warp_state),
@@ -191,6 +193,13 @@ module warp_engine #(
     assign fifo_data_in = mem_resp_data;
     assign ctrl_mem_ready = mem_req_ready;
     assign ctrl_mem_valid = mem_resp_valid;
+    
+    // Connect controller memory interface to RoCC memory interface
+    assign mem_req_valid = ctrl_mem_req;
+    assign mem_req_addr = ctrl_mem_addr;
+    assign mem_req_write = 1'b0;  // Controller only reads instructions
+    assign mem_req_data = '0;
+    assign mem_resp_ready = 1'b1;  // Always ready to receive instructions
 
 endmodule
 

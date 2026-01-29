@@ -30,6 +30,7 @@ module warp_controller #(
 
     // Memory interface
     output logic mem_req,
+    output logic [31:0] mem_addr,
     input  logic mem_ready,
     input  logic mem_valid,
 
@@ -92,6 +93,7 @@ module warp_controller #(
         lane_execute = 1'b0;
         lane_instruction = '0;
         mem_req = 1'b0;
+        mem_addr = fetch_addr;
         kernel_done = 1'b0;
         kernel_error = 1'b0;
         
@@ -106,8 +108,8 @@ module warp_controller #(
                 // Fetch instructions from memory into FIFO
                 mem_req = (inst_count < kernel_length_r);
                 
-                if (inst_count >= kernel_length_r) begin
-                    // All instructions loaded
+                if (inst_count >= kernel_length_r && !fifo_empty) begin
+                    // All instructions requested AND FIFO has data
                     state_next = STATE_EXECUTE;
                 end else if (!mem_ready) begin
                     // Memory not ready, stall
