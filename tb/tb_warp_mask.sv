@@ -53,21 +53,22 @@ module tb_warp_mask;
         test_count++;
         
         @(posedge clk);
-        update = 1;
-        new_mask = mask_value;
+        mask_update = 1;
+        mask_in = mask_value;
         
         @(posedge clk);
-        update = 0;
+        mask_update = 0;
         
         @(posedge clk);
         #1;
         
-        if (mask_out == expected) begin
+        if (mask_out == expected && lane_enable == expected) begin
             pass_count++;
-            $display("[PASS] %s: mask=0b%08b", test_name, mask_out);
+            $display("[PASS] %s: mask=0b%08b, lane_enable=0b%08b", test_name, mask_out, lane_enable);
         end else begin
             fail_count++;
-            $error("[FAIL] %s: expected 0b%08b, got 0b%08b", test_name, expected, mask_out);
+            $error("[FAIL] %s: expected 0b%08b, got mask=0b%08b, lane_enable=0b%08b", 
+                   test_name, expected, mask_out, lane_enable);
         end
     endtask
 
@@ -80,8 +81,8 @@ module tb_warp_mask;
         
         // Reset
         rst_n = 0;
-        update = 0;
-        new_mask = 0;
+        mask_update = 0;
+        mask_in = 0;
         #100;
         rst_n = 1;
         #50;
