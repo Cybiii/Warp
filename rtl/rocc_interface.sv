@@ -62,6 +62,11 @@ module rocc_interface #(
     logic [31:0] resp_data_r;
     logic resp_valid_r;
     
+    // Captured command for processing
+    rocc_opcode_e opcode_r;
+    logic [31:0] cmd_rs1_data_r;
+    logic [31:0] cmd_rs2_data_r;
+    
     // State for command handling
     typedef enum logic [1:0] {
         CMD_IDLE,
@@ -78,16 +83,23 @@ module rocc_interface #(
             resp_rd_r <= '0;
             resp_data_r <= '0;
             resp_valid_r <= 1'b0;
+            opcode_r <= ROCC_OP_GET_STATUS;
+            cmd_rs1_data_r <= '0;
+            cmd_rs2_data_r <= '0;
         end else begin
             cmd_state_r <= cmd_state_next;
             
-            if (cmd_state_r == CMD_PROCESS) begin
+            // Capture command when accepting it
+            if (cmd_state_r == CMD_IDLE && cmd_valid) begin
+                opcode_r <= opcode;
+                cmd_rs1_data_r <= cmd_rs1_data;
+                cmd_rs2_data_r <= cmd_rs2_data;
                 resp_rd_r <= cmd_rd;
             end
             
             if (cmd_state_r == CMD_RESPOND) begin
                 resp_valid_r <= 1'b1;
-                case (opcode)
+                case (opcode_r)
                     ROCC_OP_GET_STATUS: begin
                         resp_data_r <= {26'b0, status};
                     end
@@ -120,19 +132,19 @@ module rocc_interface #(
             end
             
             CMD_PROCESS: begin
-                case (opcode)
+                case (opcode_r)
                     ROCC_OP_KERNEL_START: begin
                         // rs1 = kernel address, rs2[15:0] = length
                         kernel_start = 1'b1;
-                        kernel_addr = cmd_rs1_data;
-                        kernel_length = cmd_rs2_data[15:0];
+                        kernel_addr = cmd_rs1_data_r;
+                        kernel_length = cmd_rs2_data_r[15:0];
                         cmd_state_next = CMD_WAIT_DONE;
                     end
                     
                     ROCC_OP_SET_MASK: begin
                         // rs1 = mask value (lower NUM_LANES bits)
                         mask_update = 1'b1;
-                        mask_value = cmd_rs1_data[NUM_LANES-1:0];
+                        mask_value = cmd_rs1_data_r[NUM_LANES-1:0];
                         cmd_state_next = CMD_RESPOND;
                     end
                     
