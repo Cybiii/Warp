@@ -1127,7 +1127,7 @@ VL_INLINE_OPT VlCoroutine Vtb_alu___024root___eval_initial__TOP__Vtiming__2(Vtb_
     __Vtask_tb_alu__DOT__test_alu__19__test_name = 
         std::string{"MAX: max(-1, -2) = -1"};
     __Vtask_tb_alu__DOT__test_alu__19__expected_overflow = 0U;
-    __Vtask_tb_alu__DOT__test_alu__19__expected_result = 0xfffffffeU;
+    __Vtask_tb_alu__DOT__test_alu__19__expected_result = 0xffffffffU;
     __Vtask_tb_alu__DOT__test_alu__19__op3 = 0U;
     __Vtask_tb_alu__DOT__test_alu__19__op2 = 0xfffffffeU;
     __Vtask_tb_alu__DOT__test_alu__19__op1 = 0xffffffffU;

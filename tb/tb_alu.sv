@@ -116,7 +116,7 @@ module tb_alu;
         $display("\n--- Testing MAX Operation ---");
         test_alu(OP_MAX, 32'h10, 32'h20, 32'h0, 32'h20, 1'b0, "MAX: max(16, 32) = 32");
         test_alu(OP_MAX, 32'hFFFFFFFF, 32'h1, 32'h0, 32'h1, 1'b0, "MAX: max(-1, 1) = 1");
-        test_alu(OP_MAX, 32'hFFFFFFFF, 32'hFFFFFFFE, 32'h0, 32'hFFFFFFFE, 1'b0, "MAX: max(-1, -2) = -1");
+        test_alu(OP_MAX, 32'hFFFFFFFF, 32'hFFFFFFFE, 32'h0, 32'hFFFFFFFF, 1'b0, "MAX: max(-1, -2) = -1");
         test_alu(OP_MAX, 32'h80000000, 32'h7FFFFFFF, 32'h0, 32'h7FFFFFFF, 1'b0, "MAX: max(MIN_INT, MAX_INT) = MAX_INT");
         test_alu(OP_MAX, 32'h5, 32'h5, 32'h0, 32'h5, 1'b0, "MAX: max(5, 5) = 5");
 
