@@ -91,6 +91,18 @@ test_integration: $(BUILD_DIR)
 	@echo "Executing testbench..."
 	./$(BUILD_DIR)/tb_warp_integration
 
+# Test instruction FIFO
+test_fifo: $(BUILD_DIR)
+	@echo "Running Instruction FIFO testbench..."
+	$(VERILATOR) $(VERILATOR_FLAGS) \
+		--top-module tb_instruction_fifo \
+		-o $(shell pwd)/$(BUILD_DIR)/tb_instruction_fifo \
+		$(INCLUDE_DIR)/warp_pkg.sv \
+		$(RTL_DIR)/instruction_fifo.sv \
+		$(TB_DIR)/tb_instruction_fifo.sv
+	@echo "Executing testbench..."
+	./$(BUILD_DIR)/tb_instruction_fifo
+
 # Test register file
 test_register_file: $(BUILD_DIR)
 	@echo "Running Register File testbench..."
@@ -104,7 +116,7 @@ test_register_file: $(BUILD_DIR)
 	./$(BUILD_DIR)/tb_register_file
 
 # Run all tests
-test_all: test_alu test_register_file test_integration
+test_all: test_alu test_register_file test_fifo test_integration
 	@echo "All tests completed!"
 
 # Alternative: VCS simulation
