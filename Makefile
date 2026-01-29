@@ -91,8 +91,20 @@ test_integration: $(BUILD_DIR)
 	@echo "Executing testbench..."
 	./$(BUILD_DIR)/tb_warp_integration
 
+# Test register file
+test_register_file: $(BUILD_DIR)
+	@echo "Running Register File testbench..."
+	$(VERILATOR) $(VERILATOR_FLAGS) \
+		--top-module tb_register_file \
+		-o $(shell pwd)/$(BUILD_DIR)/tb_register_file \
+		$(INCLUDE_DIR)/warp_pkg.sv \
+		$(RTL_DIR)/register_file.sv \
+		$(TB_DIR)/tb_register_file.sv
+	@echo "Executing testbench..."
+	./$(BUILD_DIR)/tb_register_file
+
 # Run all tests
-test_all: test_alu test_integration
+test_all: test_alu test_register_file test_integration
 	@echo "All tests completed!"
 
 # Alternative: VCS simulation
