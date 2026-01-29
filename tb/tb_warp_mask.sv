@@ -122,10 +122,10 @@ module tb_warp_mask;
 
         $display("\n--- Test 7: Mask persistence (no update) ---");
         @(posedge clk);
-        update = 1;
-        new_mask = 8'b10101010;
+        mask_update = 1;
+        mask_in = 8'b10101010;
         @(posedge clk);
-        update = 0;
+        mask_update = 0;
         
         // Wait several cycles without update
         repeat(5) @(posedge clk);
@@ -142,11 +142,11 @@ module tb_warp_mask;
         $display("\n--- Test 8: Rapid mask updates ---");
         for (int i = 0; i < 4; i++) begin
             @(posedge clk);
-            update = 1;
-            new_mask = $random;
+            mask_update = 1;
+            mask_in = $random;
             @(posedge clk);
             test_count++;
-            if (mask_out == new_mask) begin
+            if (mask_out == mask_in) begin
                 pass_count++;
                 $display("[PASS] Rapid update %0d: mask=0b%08b", i, mask_out);
             end else begin
@@ -154,7 +154,7 @@ module tb_warp_mask;
                 $error("[FAIL] Rapid update %0d failed", i);
             end
         end
-        update = 0;
+        mask_update = 0;
 
         // Summary
         #100;
