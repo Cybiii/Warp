@@ -1,7 +1,6 @@
 // Instruction FIFO - Instruction buffer
 // SystemVerilog implementation
 
-`include "warp_pkg.sv"
 
 module instruction_fifo #(
     parameter int FIFO_DEPTH = warp_pkg::FIFO_DEPTH,

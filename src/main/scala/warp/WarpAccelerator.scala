@@ -6,7 +6,7 @@ package warp
 import chisel3._
 import chisel3.util._
 import chisel3.experimental.{IntParam}
-import freechips.rocketchip.config.{Parameters, Field}
+import org.chipsalliance.cde.config.{Parameters, Field}
 import freechips.rocketchip.diplomacy._
 import freechips.rocketchip.tile._
 import freechips.rocketchip.rocket.{TLBConfig}
@@ -58,11 +58,13 @@ class WarpEngineBlackBox(params: WarpParams) extends BlackBox(Map(
     val mem_req_write = Output(Bool())
     val mem_req_data = Output(UInt(32.W))
     val mem_resp_valid = Input(Bool())
-    val mem_resp_ready = Output(Bool())
     val mem_resp_data = Input(UInt(32.W))
+    // Note: mem_resp_ready is hardwired to 1'b1 inside warp_engine.sv
   })
   
-  // Add SystemVerilog source files
+  // Add SystemVerilog source files (order matters: package first!)
+  addResource("/vsrc/warp_pkg.sv")
+  addResource("/vsrc/WarpEngineBlackBox.sv")
   addResource("/vsrc/warp_engine.sv")
   addResource("/vsrc/rocc_interface.sv")
   addResource("/vsrc/warp_controller.sv")
@@ -73,7 +75,6 @@ class WarpEngineBlackBox(params: WarpParams) extends BlackBox(Map(
   addResource("/vsrc/register_file.sv")
   addResource("/vsrc/alu.sv")
   addResource("/vsrc/memory_interface.sv")
-  addResource("/vsrc/warp_pkg.sv")
 }
 
 // RoCC Accelerator wrapper
@@ -123,7 +124,7 @@ class WarpAcceleratorModule(outer: WarpAccelerator, params: WarpParams)(implicit
   
   warp_engine.io.mem_resp_valid := io.mem.resp.valid
   warp_engine.io.mem_resp_data := io.mem.resp.bits.data
-  warp_engine.io.mem_resp_ready := true.B // Always ready to accept responses
+  // Note: mem_resp_ready is now an input from the BlackBox (not used in current design)
   
   // Handle memory s2_nack
   io.mem.s1_kill := false.B

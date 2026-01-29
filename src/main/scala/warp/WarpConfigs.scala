@@ -8,6 +8,7 @@ import org.chipsalliance.cde.config.{Config, Field, Parameters}
 import freechips.rocketchip.subsystem._
 import freechips.rocketchip.tile._
 import freechips.rocketchip.rocket._
+import freechips.rocketchip.diplomacy.LazyModule
 
 /**
  * Adds Warp accelerator to Rocket cores in the system

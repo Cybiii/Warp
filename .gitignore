@@ -1,3 +1,13 @@
+# Verilator build artifacts (C++ code generated from SystemVerilog)
+obj_dir/
+*.d
+*.mk
+
+# C/C++ files (Verilator-generated, not source)
+*.cpp
+*.h
+!include/*.h
+
 # Build artifacts
 *.o
 *.a
@@ -7,6 +17,7 @@
 
 # Simulation artifacts
 *.vcd
+*.fst
 *.fsdb
 *.vpd
 *.log
@@ -14,6 +25,11 @@
 work/
 simv
 vsim.wlf
+
+# Test binaries
+*.elf
+*.riscv
+*.dump
 
 # Synthesis artifacts
 *.dcp
@@ -26,12 +42,23 @@ vsim.wlf
 *.hw/
 *.ip_user_files/
 
-# Chipyard
-generators/
-project/
+# SBT / Scala / Chisel build artifacts
 target/
+build/
+project/target/
+project/project/
+.bsp/
+.metals/
+.bloop/
+chipyard/
+
+# FIRRTL / Chisel generated files
 *.fir
-*.json
+*.anno.json
+*.v
+!rtl/*.sv
+!src/**/*.sv
+!tb/*.sv
 
 # IDE
 .vscode/
@@ -47,4 +74,3 @@ Thumbs.db
 # Documentation (ignore all .md files except README.md)
 *.md
 !README.md
-

@@ -1,6 +1,5 @@
 // ALU - Arithmetic Logic Unit
 
-`include "warp_pkg.sv"
 
 module alu #(
     parameter int DATA_WIDTH = warp_pkg::DATA_WIDTH

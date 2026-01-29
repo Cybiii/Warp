@@ -1,7 +1,6 @@
 // RoCC Interface - Standard RoCC command decoder (core-agnostic)
 // SystemVerilog implementation
 
-`include "warp_pkg.sv"
 
 module rocc_interface #(
     parameter int NUM_LANES = warp_pkg::NUM_LANES_DEFAULT,

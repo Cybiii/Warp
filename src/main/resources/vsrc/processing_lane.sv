@@ -1,7 +1,6 @@
 // Processing Lane - Single lane with ALU, register file, and mask control
 // SystemVerilog implementation
 
-`include "warp_pkg.sv"
 
 module processing_lane #(
     parameter int LANE_ID = 0,

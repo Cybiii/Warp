@@ -1,7 +1,6 @@
 // Memory Interface - Memory access via RoCC (core-agnostic)
 // SystemVerilog implementation
 
-`include "warp_pkg.sv"
 
 module memory_interface #(
     parameter int NUM_LANES = warp_pkg::NUM_LANES_DEFAULT,

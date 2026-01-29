@@ -1,7 +1,6 @@
 // Register File - Per-lane register file
 // SystemVerilog implementation
 
-`include "warp_pkg.sv"
 
 module register_file #(
     parameter int REG_FILE_SIZE = warp_pkg::REG_FILE_SIZE,

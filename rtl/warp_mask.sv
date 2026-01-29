@@ -1,7 +1,6 @@
 // Warp Mask - Per-lane enable/disable register and predication logic
 // SystemVerilog implementation
 
-`include "warp_pkg.sv"
 
 module warp_mask #(
     parameter int NUM_LANES = warp_pkg::NUM_LANES_DEFAULT

@@ -1,7 +1,6 @@
 // Lane Array - Array of processing lanes
 // SystemVerilog implementation
 
-`include "warp_pkg.sv"
 
 module lane_array #(
     parameter int NUM_LANES = warp_pkg::NUM_LANES_DEFAULT,

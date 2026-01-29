@@ -1,7 +1,6 @@
 // Warp Controller - Main control unit FSM
 // SystemVerilog implementation
 
-`include "warp_pkg.sv"
 
 module warp_controller #(
     parameter int NUM_LANES = warp_pkg::NUM_LANES_DEFAULT,
