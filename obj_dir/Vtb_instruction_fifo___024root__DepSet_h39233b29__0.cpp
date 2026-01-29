@@ -305,11 +305,12 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
         VL_STOP_MT("tb/tb_instruction_fifo.sv", 125, "");
     }
     VL_WRITEF_NX("\n--- Test 5: Verify FIFO order (FIFO behavior) ---\n",0);
+    vlSelf->tb_instruction_fifo__DOT__pop = 0U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -323,25 +324,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 0: expected 0x00001000, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 0: expected 0x00001000, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 1U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -355,25 +350,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 1: expected 0x00001001, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 1: expected 0x00001001, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 2U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -387,25 +376,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 2: expected 0x00001002, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 2: expected 0x00001002, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 3U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -419,25 +402,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 3: expected 0x00001003, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 3: expected 0x00001003, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 4U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -451,25 +428,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 4: expected 0x00001004, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 4: expected 0x00001004, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 5U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -483,25 +454,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 5: expected 0x00001005, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 5: expected 0x00001005, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 6U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -515,25 +480,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 6: expected 0x00001006, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 6: expected 0x00001006, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 7U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -547,25 +506,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 7: expected 0x00001007, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 7: expected 0x00001007, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 8U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -579,25 +532,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 8: expected 0x00001008, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 8: expected 0x00001008, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 9U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -611,25 +558,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 9: expected 0x00001009, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 9: expected 0x00001009, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 0xaU;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -643,25 +584,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 10: expected 0x0000100a, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 10: expected 0x0000100a, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 0xbU;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -675,25 +610,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 11: expected 0x0000100b, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 11: expected 0x0000100b, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 0xcU;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -707,25 +636,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 12: expected 0x0000100c, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 12: expected 0x0000100c, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 0xdU;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -739,25 +662,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 13: expected 0x0000100d, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 13: expected 0x0000100d, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 0xeU;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -771,25 +688,19 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 14: expected 0x0000100e, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 14: expected 0x0000100e, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
-    co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
-                                                       nullptr, 
-                                                       "@(posedge tb_instruction_fifo.clk)", 
-                                                       "tb/tb_instruction_fifo.sv", 
-                                                       140);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 0xfU;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       130);
+                                                       131);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -803,26 +714,26 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:137: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 15: expected 0x0000100f, got 0x%08x\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:139: Assertion failed in %Ntb_instruction_fifo.unnamedblk2: [FAIL] Pop 15: expected 0x0000100f, got 0x%08x\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      32,vlSelf->tb_instruction_fifo__DOT__dut__DOT__fifo_mem
                      [vlSelf->tb_instruction_fifo__DOT__dut__DOT__read_ptr]);
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 137, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 139, "");
     }
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
+    vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 0x10U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       140);
+                                                       144);
     vlSelf->__Vm_traceActivity[2U] = 1U;
-    vlSelf->tb_instruction_fifo__DOT__unnamedblk2__DOT__i = 0x10U;
     vlSelf->tb_instruction_fifo__DOT__pop = 0U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       143);
+                                                       146);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -834,17 +745,17 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:151: Assertion failed in %Ntb_instruction_fifo: [FAIL] FIFO not empty after draining: empty=%b\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:154: Assertion failed in %Ntb_instruction_fifo: [FAIL] FIFO not empty after draining: empty=%b\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      1,(0U == (IData)(vlSelf->tb_instruction_fifo__DOT__dut__DOT__count)));
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 151, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 154, "");
     }
     VL_WRITEF_NX("\n--- Test 6: Simultaneous push and pop ---\n",0);
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       157);
+                                                       160);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x2000U;
@@ -853,7 +764,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       157);
+                                                       160);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x2001U;
@@ -862,7 +773,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       157);
+                                                       160);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x2002U;
@@ -871,7 +782,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       157);
+                                                       160);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x2003U;
@@ -880,7 +791,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       157);
+                                                       160);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x2004U;
@@ -889,7 +800,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       157);
+                                                       160);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x2005U;
@@ -898,7 +809,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       157);
+                                                       160);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x2006U;
@@ -907,7 +818,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       157);
+                                                       160);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x2007U;
@@ -916,14 +827,14 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       161);
+                                                       164);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 0U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       165);
+                                                       168);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
@@ -932,7 +843,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       169);
+                                                       172);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 0U;
     vlSelf->tb_instruction_fifo__DOT__pop = 0U;
@@ -940,7 +851,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       173);
+                                                       176);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -954,18 +865,18 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:180: Assertion failed in %Ntb_instruction_fifo: [FAIL] Simultaneous push/pop error: empty=%b, full=%b\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:183: Assertion failed in %Ntb_instruction_fifo: [FAIL] Simultaneous push/pop error: empty=%b, full=%b\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name(),
                      1,(0U == (IData)(vlSelf->tb_instruction_fifo__DOT__dut__DOT__count)),
                      1,(0x10U == (IData)(vlSelf->tb_instruction_fifo__DOT__dut__DOT__count)));
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 180, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 183, "");
     }
     while ((0U != (IData)(vlSelf->tb_instruction_fifo__DOT__dut__DOT__count))) {
         co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_instruction_fifo.clk)", 
                                                            "tb/tb_instruction_fifo.sv", 
-                                                           185);
+                                                           188);
         vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->tb_instruction_fifo__DOT__pop = 1U;
     }
@@ -975,7 +886,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x3000U;
@@ -984,7 +895,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x3001U;
@@ -993,7 +904,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x3002U;
@@ -1002,7 +913,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x3003U;
@@ -1011,7 +922,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x3004U;
@@ -1020,7 +931,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x3005U;
@@ -1029,7 +940,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x3006U;
@@ -1038,7 +949,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x3007U;
@@ -1047,7 +958,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x3008U;
@@ -1056,7 +967,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x3009U;
@@ -1065,7 +976,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x300aU;
@@ -1074,7 +985,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x300bU;
@@ -1083,7 +994,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x300cU;
@@ -1092,7 +1003,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x300dU;
@@ -1101,7 +1012,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x300eU;
@@ -1110,7 +1021,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       193);
+                                                       196);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0x300fU;
@@ -1119,7 +1030,7 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       199);
+                                                       202);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 1U;
     vlSelf->tb_instruction_fifo__DOT__data_in = 0xbadbad00U;
@@ -1127,14 +1038,14 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       202);
+                                                       205);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__push = 0U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       204);
+                                                       207);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -1145,16 +1056,16 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:212: Assertion failed in %Ntb_instruction_fifo: [FAIL] Overflow protection failed\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:215: Assertion failed in %Ntb_instruction_fifo: [FAIL] Overflow protection failed\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 212, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 215, "");
     }
     while ((0U != (IData)(vlSelf->tb_instruction_fifo__DOT__dut__DOT__count))) {
         co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                            nullptr, 
                                                            "@(posedge tb_instruction_fifo.clk)", 
                                                            "tb/tb_instruction_fifo.sv", 
-                                                           217);
+                                                           220);
         vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->tb_instruction_fifo__DOT__pop = 1U;
     }
@@ -1164,21 +1075,21 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       223);
+                                                       226);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__pop = 1U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       225);
+                                                       228);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__pop = 0U;
     co_await vlSelf->__VtrigSched_hfc7ebaab__0.trigger(0U, 
                                                        nullptr, 
                                                        "@(posedge tb_instruction_fifo.clk)", 
                                                        "tb/tb_instruction_fifo.sv", 
-                                                       227);
+                                                       230);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->tb_instruction_fifo__DOT__test_count = 
         ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__test_count);
@@ -1189,13 +1100,13 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     } else {
         vlSelf->tb_instruction_fifo__DOT__fail_count 
             = ((IData)(1U) + vlSelf->tb_instruction_fifo__DOT__fail_count);
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:235: Assertion failed in %Ntb_instruction_fifo: [FAIL] Underflow protection failed\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:238: Assertion failed in %Ntb_instruction_fifo: [FAIL] Underflow protection failed\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 235, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 238, "");
     }
     co_await vlSelf->__VdlySched.delay(0x186a0ULL, 
                                        nullptr, "tb/tb_instruction_fifo.sv", 
-                                       239);
+                                       242);
     vlSelf->__Vm_traceActivity[2U] = 1U;
     VL_WRITEF_NX("\n========================================\nTest Summary\n========================================\nTotal Tests: %0d\nPassed:      %0d\nFailed:      %0d\n========================================\n",0,
                  32,vlSelf->tb_instruction_fifo__DOT__test_count,
@@ -1204,15 +1115,15 @@ VL_INLINE_OPT VlCoroutine Vtb_instruction_fifo___024root___eval_initial__TOP__Vt
     if (VL_LIKELY((0U == vlSelf->tb_instruction_fifo__DOT__fail_count))) {
         VL_WRITEF_NX("ALL TESTS PASSED!\n",0);
     } else {
-        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:251: Assertion failed in %Ntb_instruction_fifo: SOME TESTS FAILED!\n",0,
+        VL_WRITEF_NX("[%0t] %%Error: tb_instruction_fifo.sv:254: Assertion failed in %Ntb_instruction_fifo: SOME TESTS FAILED!\n",0,
                      64,VL_TIME_UNITED_Q(1000),-9,vlSymsp->name());
-        VL_STOP_MT("tb/tb_instruction_fifo.sv", 251, "");
+        VL_STOP_MT("tb/tb_instruction_fifo.sv", 254, "");
     }
     co_await vlSelf->__VdlySched.delay(0x186a0ULL, 
                                        nullptr, "tb/tb_instruction_fifo.sv", 
-                                       254);
+                                       257);
     vlSelf->__Vm_traceActivity[2U] = 1U;
-    VL_FINISH_MT("tb/tb_instruction_fifo.sv", 255, "");
+    VL_FINISH_MT("tb/tb_instruction_fifo.sv", 258, "");
     vlSelf->__Vm_traceActivity[2U] = 1U;
 }
 

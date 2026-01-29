@@ -126,9 +126,11 @@ module tb_instruction_fifo;
         end
 
         $display("\n--- Test 5: Verify FIFO order (FIFO behavior) ---");
+        pop = 0;
         for (int i = 0; i < FIFO_DEPTH; i++) begin
             @(posedge clk);
             test_count++;
+            // Check data at current read pointer
             if (data_out == (32'h1000 + i)) begin
                 pass_count++;
                 $display("[PASS] Pop %0d: data=0x%08X", i, data_out);
@@ -136,9 +138,10 @@ module tb_instruction_fifo;
                 fail_count++;
                 $error("[FAIL] Pop %0d: expected 0x%08X, got 0x%08X", i, 32'h1000+i, data_out);
             end
+            // Pop on this cycle, read_ptr will increment next clock
             pop = 1;
-            @(posedge clk);
         end
+        @(posedge clk);
         pop = 0;
         @(posedge clk);
         
