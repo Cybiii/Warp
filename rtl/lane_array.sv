@@ -21,25 +21,34 @@ module lane_array #(
 
     import warp_pkg::*;
 
-    // TODO: Instantiate NUM_LANES processing_lane modules
-    // TODO: Implement instruction broadcasting
-    // TODO: Implement result collection
-    // TODO: Implement synchronization logic
+    // Per-lane ready signals
+    logic [NUM_LANES-1:0] lane_ready;
+    
+    // Synchronization: all enabled lanes must be ready
+    always_comb begin
+        ready = 1'b1;
+        for (int i = 0; i < NUM_LANES; i++) begin
+            if (lane_enable[i]) begin
+                ready = ready && lane_ready[i];
+            end
+        end
+    end
 
-    // Generate lanes
+    // Generate processing lanes
     genvar i;
     generate
         for (i = 0; i < NUM_LANES; i++) begin : gen_lanes
-            // TODO: Instantiate processing_lane
-            // processing_lane #(
-            //     .LANE_ID(i)
-            // ) lane_inst (
-            //     .clk(clk),
-            //     .rst_n(rst_n),
-            //     .execute(execute && lane_enable[i]),
-            //     .instruction(instruction),
-            //     .ready(lane_ready[i])
-            // );
+            processing_lane #(
+                .LANE_ID(i),
+                .DATA_WIDTH(DATA_WIDTH)
+            ) lane_inst (
+                .clk(clk),
+                .rst_n(rst_n),
+                .execute(execute),
+                .instruction(instruction),
+                .lane_enable(lane_enable[i]),
+                .ready(lane_ready[i])
+            );
         end
     endgenerate
 
