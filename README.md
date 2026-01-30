@@ -10,5 +10,3 @@ A small SIMT (Single Instruction, Multiple Thread) vector accelerator with 8-16 
 - **Memory instructions**: LOAD, STORE with scatter/gather support
 - **Warp mask** for lane predication (conditional execution)
 - **Instruction FIFO** for autonomous kernel execution
-- **Independent operation**: Engine loads and executes kernels from memory
-
